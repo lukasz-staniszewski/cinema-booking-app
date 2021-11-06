@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class CinemaBookingApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(CinemaBookingApplication.class, args);
     }
@@ -18,5 +17,9 @@ public class CinemaBookingApplication {
         return String.format("Hello %s!", name);
     }
 
+    @GetMapping("/welcome_world")
+    public String welcomeWorld() {
+        return "Hello world!";
+    }
 }
 
