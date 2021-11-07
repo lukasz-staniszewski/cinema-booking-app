@@ -1,0 +1,86 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id "com.github.node-gradle.node" version "3.0.1"
+}
+
+group = 'com.thai-chicken'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+node {
+    version = '16.13.0'
+    download = true
+
+    // Set the work directory for unpacking node
+    workDir = file("${project.projectDir}/src/main/cinema-booking-web/nodejs")
+
+    // Set the work directory for NPM
+    npmWorkDir = file("${project.projectDir}/src/main/cinema-booking-web/npm")
+
+    // Set the work directory where node_modules should be located
+    nodeModulesDir = file("${project.projectDir}/src/main/cinema-booking-web")
+}
+
+task npmInstallDependencies(type: NpmTask) {
+    description = "Installs all dependencies from package.json"
+    dependsOn 'npmSetup'
+    execOverrides {
+        it.ignoreExitValue = true
+        it.workingDir = 'src/main/cinema-booking-web'
+
+    }
+    args = ["install"]
+}
+
+task npmBuild(type: NpmTask) {
+    description = "Builds production version of the webapp"
+    dependsOn 'npmInstallDependencies'
+    execOverrides {
+        it.workingDir = 'src/main/cinema-booking-web'
+    }
+    args = ["run", "build"]
+}
+
+task copyFrontToBuild(type: Copy) {
+    dependsOn 'npmBuild'
+    from "$projectDir/main/cinema-booking-web/build/"
+    into "$buildDir/resources/main/static"
+}
+
+task uiTest(type: NpmTask) {
+    environment = ['CI': 'true']
+    args = ['run', 'test']
+}
+
+task uiRun(type: NpmTask) {
+//    dependsOn("uiTest")
+    args = ['start']
+}
+
+
+processResources {
+    dependsOn 'copyFrontToBuild'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
