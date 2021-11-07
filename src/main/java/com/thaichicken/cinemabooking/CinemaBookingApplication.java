@@ -21,5 +21,7 @@ public class CinemaBookingApplication {
     public String welcomeWorld() {
         return "Hello world!";
     }
+
 }
+
 
