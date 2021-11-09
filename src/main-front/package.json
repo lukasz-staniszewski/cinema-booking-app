@@ -1,5 +1,5 @@
 {
-  "name": "cinema-booking-web",
+  "name": "cinema-booking-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
