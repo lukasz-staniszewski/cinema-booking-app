@@ -24,39 +24,26 @@ node {
     download = true
 
     // Set the work directory for unpacking node
-    workDir = file("${project.projectDir}/src/main/cinema-booking-web/nodejs")
+    workDir = file("${project.projectDir}/src/main-frontend/nodejs")
 
     // Set the work directory for NPM
-    npmWorkDir = file("${project.projectDir}/src/main/cinema-booking-web/npm")
+    npmWorkDir = file("${project.projectDir}/src/main-frontend/npm")
 
     // Set the work directory where node_modules should be located
-    nodeModulesDir = file("${project.projectDir}/src/main/cinema-booking-web")
+    nodeModulesDir = file("${project.projectDir}/src/main-frontend")
 }
 
 task npmInstallDependencies(type: NpmTask) {
     description = "Installs all dependencies from package.json"
     dependsOn 'npmSetup'
-    execOverrides {
-        it.ignoreExitValue = true
-        it.workingDir = 'src/main/cinema-booking-web'
-
-    }
     args = ["install"]
 }
 
 task npmBuild(type: NpmTask) {
     description = "Builds production version of the webapp"
     dependsOn 'npmInstallDependencies'
-    execOverrides {
-        it.workingDir = 'src/main/cinema-booking-web'
-    }
+//    }
     args = ["run", "build"]
-}
-
-task copyFrontToBuild(type: Copy) {
-    dependsOn 'npmBuild'
-    from "$projectDir/main/cinema-booking-web/build/"
-    into "$buildDir/resources/main/static"
 }
 
 task uiTest(type: NpmTask) {
@@ -65,14 +52,10 @@ task uiTest(type: NpmTask) {
 }
 
 task uiRun(type: NpmTask) {
-//    dependsOn("uiTest")
     args = ['start']
 }
 
 
-processResources {
-    dependsOn 'copyFrontToBuild'
-}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
