@@ -1,2 +1,2 @@
 # cinema-booking-app
-Cinema tickets booking web-app hehe. 
+Cinema tickets booking web-app test jira.
