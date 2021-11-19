@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header'
 
 class App extends Component {
     constructor(props) {
@@ -8,14 +9,19 @@ class App extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            message: null
+            message: null,
+            name: "Unknown"
         };
+        this.setName = this.setName.bind(this)
     }
 
+    setName(g_name){
+        this.setState({name: g_name});
+        this.makeFetch(g_name);
+    }
 
-    componentDidMount() {
-        console.log(this.state.message);
-        fetch("/cinema_client/?client_id=CinemaClient", {
+    makeFetch(g_name){
+        fetch(`/cinema_client/?client_id=${g_name}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -27,20 +33,25 @@ class App extends Component {
             .then(myJson => {
                 this.setState({message: myJson})
             })
-        console.log(this.state.message);
+    }
+
+
+    componentDidMount() {
+        this.makeFetch(this.state.name);
     }
 
 
     render() {
+
         const messages = this.state.message;
         return (
             <div className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
+                    <Header setName={this.setName}/>
                     <div className="ui main text container">
-                        <p>if you do /cinema_client/?client_id=CinemaClient in spring you get:</p>
-                        <h2>/</h2>
-                        {messages ? messages.content : 'Loading...'}
+                        <h3>if you do /cinema_client/?client_id={this.state.name} in backend you get:</h3>
+                        {messages ? messages.content : 'Cant fetch from backend...'}
                     </div>
                 </header>
             </div>
