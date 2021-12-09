@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface HallSeatRepository extends JpaRepository<HallSeatEntity, Long> {
+public interface HallSeatRepository extends JpaRepository<HallSeatEntity, Integer> {
 }
