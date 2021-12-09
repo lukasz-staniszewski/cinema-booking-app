@@ -4,10 +4,21 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-public class HallsSeatsEntityPK implements Serializable {
+public class ShowTimeSeatEntityPK implements Serializable {
+    private int showtimeId;
     private int rowNumber;
     private int seatInRowNumber;
     private int cinemaHallNumber;
+
+    @Column(name = "showtime_id", nullable = false)
+    @Id
+    public int getShowtimeId() {
+        return showtimeId;
+    }
+
+    public void setShowtimeId(int showtimeId) {
+        this.showtimeId = showtimeId;
+    }
 
     @Column(name = "row_number", nullable = false)
     @Id
@@ -44,8 +55,9 @@ public class HallsSeatsEntityPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        HallsSeatsEntityPK that = (HallsSeatsEntityPK) o;
+        ShowTimeSeatEntityPK that = (ShowTimeSeatEntityPK) o;
 
+        if (showtimeId != that.showtimeId) return false;
         if (rowNumber != that.rowNumber) return false;
         if (seatInRowNumber != that.seatInRowNumber) return false;
         return cinemaHallNumber == that.cinemaHallNumber;
@@ -53,7 +65,8 @@ public class HallsSeatsEntityPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = rowNumber;
+        int result = showtimeId;
+        result = 31 * result + rowNumber;
         result = 31 * result + seatInRowNumber;
         result = 31 * result + cinemaHallNumber;
         return result;

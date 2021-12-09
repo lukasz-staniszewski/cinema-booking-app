@@ -1,17 +1,16 @@
 package com.thaichicken.cinemabooking.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "HallsSeats", schema = "public", catalog = "pis-db")
-@IdClass(HallsSeatsEntityPK.class)
-public class HallsSeatsEntity {
+public class HallSeatEntityPK implements Serializable {
     private int rowNumber;
     private int seatInRowNumber;
     private int cinemaHallNumber;
 
-    @Id
     @Column(name = "row_number", nullable = false)
+    @Id
     public int getRowNumber() {
         return rowNumber;
     }
@@ -20,8 +19,8 @@ public class HallsSeatsEntity {
         this.rowNumber = rowNumber;
     }
 
-    @Id
     @Column(name = "seat_in_row_number", nullable = false)
+    @Id
     public int getSeatInRowNumber() {
         return seatInRowNumber;
     }
@@ -30,8 +29,8 @@ public class HallsSeatsEntity {
         this.seatInRowNumber = seatInRowNumber;
     }
 
-    @Id
     @Column(name = "cinema_hall_number", nullable = false)
+    @Id
     public int getCinemaHallNumber() {
         return cinemaHallNumber;
     }
@@ -45,7 +44,7 @@ public class HallsSeatsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        HallsSeatsEntity that = (HallsSeatsEntity) o;
+        HallSeatEntityPK that = (HallSeatEntityPK) o;
 
         if (rowNumber != that.rowNumber) return false;
         if (seatInRowNumber != that.seatInRowNumber) return false;

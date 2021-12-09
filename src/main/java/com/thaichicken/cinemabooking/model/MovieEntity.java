@@ -3,8 +3,8 @@ package com.thaichicken.cinemabooking.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Movies", schema = "public", catalog = "pis-db")
-public class MoviesEntity {
+@Table(name = "Movie", schema = "public", catalog = "pis-db")
+public class MovieEntity {
     private int movieId;
     private String name;
     private String description;
@@ -88,7 +88,7 @@ public class MoviesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MoviesEntity that = (MoviesEntity) o;
+        MovieEntity that = (MovieEntity) o;
 
         if (movieId != that.movieId) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;

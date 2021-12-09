@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Reservations", schema = "public", catalog = "pis-db")
-public class ReservationsEntity {
+@Table(name = "Reservation", schema = "public", catalog = "pis-db")
+public class ReservationEntity {
     private int reservationId;
     private Timestamp timestamp;
 
@@ -34,7 +34,7 @@ public class ReservationsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ReservationsEntity that = (ReservationsEntity) o;
+        ReservationEntity that = (ReservationEntity) o;
 
         if (reservationId != that.reservationId) return false;
         return timestamp != null ? timestamp.equals(that.timestamp) : that.timestamp == null;
