@@ -11,6 +11,7 @@ public class MoviesEntity {
     private Integer length;
     private Integer productionYear;
     private String type;
+    private String director;
 
     @Id
     @Column(name = "movie_id", nullable = false)
@@ -72,6 +73,16 @@ public class MoviesEntity {
         this.type = type;
     }
 
+    @Basic
+    @Column(name = "director", length = 100)
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -85,7 +96,8 @@ public class MoviesEntity {
         if (length != null ? !length.equals(that.length) : that.length != null) return false;
         if (productionYear != null ? !productionYear.equals(that.productionYear) : that.productionYear != null)
             return false;
-        return type != null ? type.equals(that.type) : that.type == null;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
+        return director != null ? director.equals(that.director) : that.director == null;
     }
 
     @Override
@@ -96,6 +108,7 @@ public class MoviesEntity {
         result = 31 * result + (length != null ? length.hashCode() : 0);
         result = 31 * result + (productionYear != null ? productionYear.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (director != null ? director.hashCode() : 0);
         return result;
     }
 }
