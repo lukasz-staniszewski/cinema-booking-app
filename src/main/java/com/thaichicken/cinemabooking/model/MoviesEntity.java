@@ -64,7 +64,7 @@ public class MoviesEntity {
     }
 
     @Basic
-    @Column(name = "type", length = -1)
+    @Column(name = "type", length = 50)
     public String getType() {
         return type;
     }
