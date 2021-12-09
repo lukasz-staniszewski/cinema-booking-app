@@ -3,9 +3,9 @@ package com.thaichicken.cinemabooking.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ShowTimesSeats", schema = "public", catalog = "pis-db")
-@IdClass(ShowTimesSeatsEntityPK.class)
-public class ShowTimesSeatsEntity {
+@Table(name = "ShowTimeSeat", schema = "public", catalog = "pis-db")
+@IdClass(ShowTimeSeatEntityPK.class)
+public class ShowTimeSeatEntity {
     private int showtimeId;
     private int rowNumber;
     private int seatInRowNumber;
@@ -56,7 +56,7 @@ public class ShowTimesSeatsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ShowTimesSeatsEntity that = (ShowTimesSeatsEntity) o;
+        ShowTimeSeatEntity that = (ShowTimeSeatEntity) o;
 
         if (showtimeId != that.showtimeId) return false;
         if (rowNumber != that.rowNumber) return false;

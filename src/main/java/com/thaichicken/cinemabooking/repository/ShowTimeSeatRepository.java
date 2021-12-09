@@ -1,9 +1,9 @@
 package com.thaichicken.cinemabooking.repository;
 
-import com.thaichicken.cinemabooking.model.HallsSeatsEntity;
+import com.thaichicken.cinemabooking.model.ShowTimeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface HallsSeatsRepository extends JpaRepository<HallsSeatsEntity, Long> {
+public interface ShowTimeSeatRepository extends JpaRepository<ShowTimeEntity, Long> {
 }

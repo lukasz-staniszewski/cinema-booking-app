@@ -5,8 +5,8 @@ import java.sql.Date;
 import java.sql.Time;
 
 @Entity
-@Table(name = "ShowTimes", schema = "public", catalog = "pis-db")
-public class ShowTimesEntity {
+@Table(name = "ShowTime", schema = "public", catalog = "pis-db")
+public class ShowTimeEntity {
     private int showtimeId;
     private Date date;
     private Time hour;
@@ -46,7 +46,7 @@ public class ShowTimesEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ShowTimesEntity that = (ShowTimesEntity) o;
+        ShowTimeEntity that = (ShowTimeEntity) o;
 
         if (showtimeId != that.showtimeId) return false;
         if (date != null ? !date.equals(that.date) : that.date != null) return false;

@@ -1,27 +1,17 @@
 package com.thaichicken.cinemabooking.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
 
-public class ShowTimesSeatsEntityPK implements Serializable {
-    private int showtimeId;
+@Entity
+@Table(name = "HallSeat", schema = "public", catalog = "pis-db")
+@IdClass(HallSeatEntityPK.class)
+public class HallSeatEntity {
     private int rowNumber;
     private int seatInRowNumber;
     private int cinemaHallNumber;
 
-    @Column(name = "showtime_id", nullable = false)
     @Id
-    public int getShowtimeId() {
-        return showtimeId;
-    }
-
-    public void setShowtimeId(int showtimeId) {
-        this.showtimeId = showtimeId;
-    }
-
     @Column(name = "row_number", nullable = false)
-    @Id
     public int getRowNumber() {
         return rowNumber;
     }
@@ -30,8 +20,8 @@ public class ShowTimesSeatsEntityPK implements Serializable {
         this.rowNumber = rowNumber;
     }
 
-    @Column(name = "seat_in_row_number", nullable = false)
     @Id
+    @Column(name = "seat_in_row_number", nullable = false)
     public int getSeatInRowNumber() {
         return seatInRowNumber;
     }
@@ -40,8 +30,8 @@ public class ShowTimesSeatsEntityPK implements Serializable {
         this.seatInRowNumber = seatInRowNumber;
     }
 
-    @Column(name = "cinema_hall_number", nullable = false)
     @Id
+    @Column(name = "cinema_hall_number", nullable = false)
     public int getCinemaHallNumber() {
         return cinemaHallNumber;
     }
@@ -55,9 +45,8 @@ public class ShowTimesSeatsEntityPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ShowTimesSeatsEntityPK that = (ShowTimesSeatsEntityPK) o;
+        HallSeatEntity that = (HallSeatEntity) o;
 
-        if (showtimeId != that.showtimeId) return false;
         if (rowNumber != that.rowNumber) return false;
         if (seatInRowNumber != that.seatInRowNumber) return false;
         return cinemaHallNumber == that.cinemaHallNumber;
@@ -65,8 +54,7 @@ public class ShowTimesSeatsEntityPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = showtimeId;
-        result = 31 * result + rowNumber;
+        int result = rowNumber;
         result = 31 * result + seatInRowNumber;
         result = 31 * result + cinemaHallNumber;
         return result;
