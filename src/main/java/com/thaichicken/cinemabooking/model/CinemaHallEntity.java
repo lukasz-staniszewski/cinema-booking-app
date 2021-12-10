@@ -3,7 +3,7 @@ package com.thaichicken.cinemabooking.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CinemaHall", schema = "public", catalog = "pis-db")
+@Table(name = "cinema_hall", schema = "public", catalog = "pis-db")
 public class CinemaHallEntity {
     private int cinemaHallNumber;
     private int capacity;

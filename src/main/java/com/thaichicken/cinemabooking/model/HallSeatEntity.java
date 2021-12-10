@@ -3,12 +3,13 @@ package com.thaichicken.cinemabooking.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "HallSeat", schema = "public", catalog = "pis-db")
+@Table(name = "hall_seat", schema = "public", catalog = "pis-db")
 @IdClass(HallSeatEntityPK.class)
 public class HallSeatEntity {
     private int rowNumber;
     private int seatInRowNumber;
     private int cinemaHallNumber;
+    private CinemaHallEntity cinemaHallByCinemaHallNumber;
 
     @Id
     @Column(name = "row_number", nullable = false)
@@ -58,5 +59,15 @@ public class HallSeatEntity {
         result = 31 * result + seatInRowNumber;
         result = 31 * result + cinemaHallNumber;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "cinema_hall_number", referencedColumnName = "cinema_hall_number", nullable = false, insertable = false, updatable = false)
+    public CinemaHallEntity getCinemaHallByCinemaHallNumber() {
+        return cinemaHallByCinemaHallNumber;
+    }
+
+    public void setCinemaHallByCinemaHallNumber(CinemaHallEntity cinemaHallByCinemaHallNumber) {
+        this.cinemaHallByCinemaHallNumber = cinemaHallByCinemaHallNumber;
     }
 }
