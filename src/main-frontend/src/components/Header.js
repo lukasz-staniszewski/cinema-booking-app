@@ -11,8 +11,9 @@ const Header=(props)=>{
 
     const changeName = (event) =>{
         event.preventDefault();   // reload prevention
-        name.current.value = "";
         props.setInputNameFunction(name.current.value);
+        name.current.value = "";
+
     }
 
     return (

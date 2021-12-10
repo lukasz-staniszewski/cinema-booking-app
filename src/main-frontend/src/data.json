@@ -1,0 +1,58 @@
+[
+  {
+    "showtime_id": 1,
+    "movie_id": 1,
+    "date": "2021-12-12",
+    "hour": "13:00:00",
+    "name": "Dom Gucci",
+    "description": "",
+    "length": 158,
+    "production_year": 2021,
+    "director": "Ridley Scott"
+  },
+  {
+    "showtime_id": 4,
+    "movie_id": 2,
+    "date": "2021-12-12",
+    "hour": "11:30:00",
+    "name": "Clifford. Duży pies.",
+    "description": "",
+    "length": 96,
+    "production_year": 2021,
+    "director": "Walt Becker"
+  },
+
+  {
+    "showtime_id": 7,
+    "movie_id": 3,
+    "date": "2021-12-13",
+    "hour": "08:30:00",
+    "name": "Pewnego Razu w Hollywood",
+    "description": "",
+    "length": 161,
+    "production_year": 2021,
+    "director": "Quentin Tarantino"
+  },
+  {
+    "showtime_id": 9,
+    "movie_id": 4,
+    "date": "2021-12-10",
+    "hour": "10:45:00",
+    "name": "SPIDER-MAN: BEZ DROGI DO DOMU",
+    "description": "null",
+    "length": 150,
+    "production_year": 2021,
+    "director": "Jon Watts"
+  },
+  {
+    "showtime_id": 12,
+    "movie_id": 4,
+    "date": "2023-12-10",
+    "hour": "13:45:00",
+    "name": "Kasia poprosze KFC wrap",
+    "description": "null",
+    "length": 120,
+    "production_year": 2021,
+    "director": "Witam witam"
+  }
+]

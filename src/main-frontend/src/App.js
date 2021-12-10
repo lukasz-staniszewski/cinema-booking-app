@@ -1,7 +1,9 @@
 import React, {useCallback, useEffect, useState} from 'react';
+import FilmList from "./components/FilmList";
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header'
+import data from "./data.json"
 
 const App = () =>{
     const[name, setName] = useState("Unknown");
@@ -49,6 +51,7 @@ const App = () =>{
                         {message ? message : 'Cant fetch from backend...'}
                     </div>
                 </header>
+                <FilmList films={data}/>
             </div>
         );
 }

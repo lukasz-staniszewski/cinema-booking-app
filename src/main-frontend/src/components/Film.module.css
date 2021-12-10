@@ -1,0 +1,33 @@
+.card-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+}
+.card h2 {
+    color: var(--desaturated-dark-cyan);
+    font-size: 13px;
+}
+.position {
+    color: var(--very-dark-grayish-cyan);
+    font-size: 15px;
+    font-weight: 700;
+}
+.about p {
+    color: var(--dark-grayish-cyan);
+    font-size: 12px;
+}
+.information {
+    transition: all .4s ease-in-out;
+}
+.information:hover {
+    cursor: pointer;
+    color: var(--desaturated-dark-cyan);
+}
+@media (min-width: 1024px) {
+    .card-content {
+        width: 21%;
+        border-radius: 10px;
+        border: 1px solid var(--desaturated-dark-cyan);
+        padding: 10px;
+    }
+}
