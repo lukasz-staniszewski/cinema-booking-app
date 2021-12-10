@@ -39,7 +39,7 @@ const App = () =>{
         if (name){
             fetchNameHandler();
         }
-    }, [fetchNameHandler])
+    }, [fetchNameHandler, name])
 
     return (
             <div className="App">
