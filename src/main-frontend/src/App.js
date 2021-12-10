@@ -1,62 +1,57 @@
-import React, {Component} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header'
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            error: null,
-            isLoaded: false,
-            message: null,
-            name: "Unknown"
-        };
-        this.setName = this.setName.bind(this)
+const App = () =>{
+    const[name, setName] = useState("Unknown");
+    const[message, setMessage] = useState(null);
+
+    const setInputNameHandler = (input_value)=>{
+        setName(input_value);
     }
 
-    setName(g_name){
-        this.setState({name: g_name});
-        this.makeFetch(g_name);
-    }
+    const fetchNameHandler = useCallback(async () => {
+        try{
+            const response_fetch = await fetch(`/cinema_client/?client_id=${name}`,
+                {headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }});
 
-    makeFetch(g_name){
-        fetch(`/cinema_client/?client_id=${g_name}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+            if(!response_fetch.ok){
+                throw new Error("Fetch not ok!");
             }
-        })
-            .then(res => {
-                return res.json();
-            })
-            .then(myJson => {
-                this.setState({message: myJson})
-            })
-    }
+            else {
+                const new_message_json = await response_fetch.json();
+                setMessage(new_message_json.content);
+            }
+        }
+        catch (err){
+            console.log("No backend connection only!");
+        }
+    }, [name]);
 
 
-    componentDidMount() {
-        this.makeFetch(this.state.name);
-    }
+    useEffect(()=>{
+        if (name){
+            fetchNameHandler();
+        }
+    }, [fetchNameHandler])
 
-
-    render() {
-
-        const messages = this.state.message;
-        return (
+    return (
             <div className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
-                    <Header setName={this.setName}/>
+                    <Header setInputNameFunction={setInputNameHandler}/>
                     <div className="ui main text container">
-                        <h3>if you do /cinema_client/?client_id={this.state.name} in backend you get:</h3>
-                        {messages ? messages.content : 'Cant fetch from backend...'}
+                        <h3>if you do /cinema_client/?client_id={name} in backend you get:</h3>
+                        {message ? message : 'Cant fetch from backend...'}
                     </div>
                 </header>
             </div>
         );
-    }
 }
+
 
 export default App;
