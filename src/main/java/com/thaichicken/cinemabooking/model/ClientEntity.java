@@ -11,6 +11,16 @@ public class ClientEntity {
     private String email;
     private String phone;
 
+    public ClientEntity(String name, String surname, String email, String phone) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+    }
+
+    public ClientEntity() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "clientGenerator")
     @SequenceGenerator(name = "clientGenerator", sequenceName = "client_id_seq", allocationSize = 1)

@@ -10,6 +10,16 @@ public class CinemaHallEntity {
     private int nRows;
     private int nSeatsInRows;
 
+    public CinemaHallEntity() {
+    }
+
+    public CinemaHallEntity(int cinemaHallNumber, int capacity, int nRows, int nSeatsInRows) {
+        this.cinemaHallNumber = cinemaHallNumber;
+        this.capacity = capacity;
+        this.nRows = nRows;
+        this.nSeatsInRows = nSeatsInRows;
+    }
+
     @Id
     @Column(name = "cinema_hall_number", nullable = false)
     public int getCinemaHallNumber() {
