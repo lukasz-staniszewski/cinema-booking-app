@@ -6,6 +6,7 @@ import com.thaichicken.cinemabooking.repository.ShowTimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -44,5 +45,9 @@ public class DefaultShowTimeService implements ShowTimeService {
     @Override
     public ShowTimeEntity getShowTimeById(Integer id) {
         return showTimeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Show Time not found with id " + id));
+    }
+
+    public List<ShowTimeEntity> getShowTimesByDate(Date date) {
+        return showTimeRepository.getAllByDate(date);
     }
 }
