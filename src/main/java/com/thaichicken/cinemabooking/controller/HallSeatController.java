@@ -1,6 +1,7 @@
 package com.thaichicken.cinemabooking.controller;
 
 import com.thaichicken.cinemabooking.model.HallSeatEntity;
+import com.thaichicken.cinemabooking.model.HallSeatEntityPK;
 import com.thaichicken.cinemabooking.service.DefaultHallSeatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,25 +22,23 @@ public class HallSeatController {
         return hallSeatService.getAllHallSeats();
     }
 
-    @GetMapping("hall_seat/{id}")
-    public HallSeatEntity getHallSeat(@PathVariable(value = "id") Integer id) {
-        return hallSeatService.getHallSeatById(id);
+    @GetMapping("/hall_seat")
+    public HallSeatEntity getHallSeat(@RequestParam(name = "row_number") Integer row_number,
+                                      @RequestParam(name = "seat_in_row_number") Integer seat_in_row_number,
+                                      @RequestParam(name = "cinema_hall_number") Integer cinema_hall_number) {
+        return hallSeatService.getHallSeatById(new HallSeatEntityPK(row_number, seat_in_row_number, cinema_hall_number));
     }
 
-    @PostMapping("hall_seat")
+    @PostMapping("/hall_seat")
     public HallSeatEntity createHallSeat(@RequestBody HallSeatEntity hallSeat) {
         return hallSeatService.createHallSeat(hallSeat);
     }
 
-    @PutMapping("hall_seat/{id}")
-    public HallSeatEntity updateHallSeat(@PathVariable(value = "id") Integer id,
-                                         @RequestBody HallSeatEntity hallSeat) {
-        return hallSeatService.updateHallSeat(id, hallSeat);
-    }
-
-    @DeleteMapping("hall_seat/{id}")
-    public ResponseEntity<HttpStatus> deleteHallSeat(@PathVariable(value = "id") Integer id) {
-        hallSeatService.deleteHallSeat(id);
+    @DeleteMapping("/hall_seat")
+    public ResponseEntity<HttpStatus> deleteHallSeat(@RequestParam(name = "row_number") Integer row_number,
+                                                     @RequestParam(name = "seat_in_row_number") Integer seat_in_row_number,
+                                                     @RequestParam(name = "cinema_hall_number") Integer cinema_hall_number) {
+        hallSeatService.deleteHallSeat(new HallSeatEntityPK(row_number, seat_in_row_number, cinema_hall_number));
         return ResponseEntity.ok().build();
     }
 }

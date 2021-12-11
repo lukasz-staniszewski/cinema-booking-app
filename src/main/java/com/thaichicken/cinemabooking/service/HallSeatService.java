@@ -1,17 +1,18 @@
 package com.thaichicken.cinemabooking.service;
 
 import com.thaichicken.cinemabooking.model.HallSeatEntity;
+import com.thaichicken.cinemabooking.model.HallSeatEntityPK;
 
 import java.util.List;
 
 public interface HallSeatService {
     HallSeatEntity createHallSeat(HallSeatEntity hallSeat);
 
-    HallSeatEntity updateHallSeat(Integer id, HallSeatEntity hallSeat);
+//    HallSeatEntity updateHallSeat(HallSeatEntityPK id, HallSeatEntity hallSeat);
 
-    void deleteHallSeat(Integer id);
+    void deleteHallSeat(HallSeatEntityPK id);
 
     List<HallSeatEntity> getAllHallSeats();
 
-    HallSeatEntity getHallSeatById(Integer id);
+    HallSeatEntity getHallSeatById(HallSeatEntityPK id);
 }

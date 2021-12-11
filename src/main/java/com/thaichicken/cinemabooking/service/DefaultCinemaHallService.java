@@ -1,5 +1,6 @@
 package com.thaichicken.cinemabooking.service;
 
+import com.thaichicken.cinemabooking.exception.ResourceAlreadyExistsException;
 import com.thaichicken.cinemabooking.exception.ResourceNotFoundException;
 import com.thaichicken.cinemabooking.model.CinemaHallEntity;
 import com.thaichicken.cinemabooking.repository.CinemaHallRepository;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DefaultCinemaHallService implements CinemaHallService {
@@ -16,7 +18,12 @@ public class DefaultCinemaHallService implements CinemaHallService {
 
     @Override
     public CinemaHallEntity createCinemaHall(CinemaHallEntity cinemaHall) {
-        return cinemaHallRepository.save(cinemaHall);
+        Optional<CinemaHallEntity> cinemaHallEntityOptional = cinemaHallRepository.findById(cinemaHall.getCinemaHallNumber());
+        if (cinemaHallEntityOptional.isPresent()) {
+            throw new ResourceAlreadyExistsException("Cinema Hall already exists with id " + cinemaHall.getCinemaHallNumber());
+        } else {
+            return cinemaHallRepository.save(cinemaHall);
+        }
     }
 
     @Override

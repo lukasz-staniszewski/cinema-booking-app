@@ -9,6 +9,16 @@ public class HallSeatEntityPK implements Serializable {
     private int seatInRowNumber;
     private int cinemaHallNumber;
 
+    public HallSeatEntityPK(Integer row_number, Integer seat_in_row_number, Integer cinema_hall_number) {
+        this.rowNumber = row_number;
+        this.seatInRowNumber = seat_in_row_number;
+        this.cinemaHallNumber = cinema_hall_number;
+    }
+
+    public HallSeatEntityPK() {
+
+    }
+
     @Column(name = "row_number", nullable = false)
     @Id
     public int getRowNumber() {
