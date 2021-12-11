@@ -2,7 +2,6 @@ package com.thaichicken.cinemabooking.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thaichicken.cinemabooking.model.ClientEntity;
-import com.thaichicken.cinemabooking.repository.ClientRepository;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,9 +28,6 @@ public class ClientControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
-
-    @Autowired
-    private ClientRepository clientRepository;
 
     @Test
     public void shouldCreateClient() throws Exception {
