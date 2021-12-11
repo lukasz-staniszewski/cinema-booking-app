@@ -3,12 +3,22 @@ package com.thaichicken.cinemabooking.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CinemaHall", schema = "public", catalog = "pis-db")
+@Table(name = "cinema_hall", schema = "public", catalog = "pis-db")
 public class CinemaHallEntity {
     private int cinemaHallNumber;
     private int capacity;
     private int nRows;
     private int nSeatsInRows;
+
+    public CinemaHallEntity() {
+    }
+
+    public CinemaHallEntity(int cinemaHallNumber, int capacity, int nRows, int nSeatsInRows) {
+        this.cinemaHallNumber = cinemaHallNumber;
+        this.capacity = capacity;
+        this.nRows = nRows;
+        this.nSeatsInRows = nSeatsInRows;
+    }
 
     @Id
     @Column(name = "cinema_hall_number", nullable = false)

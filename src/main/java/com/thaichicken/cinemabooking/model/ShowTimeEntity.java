@@ -5,13 +5,16 @@ import java.sql.Date;
 import java.sql.Time;
 
 @Entity
-@Table(name = "ShowTime", schema = "public", catalog = "pis-db")
+@Table(name = "show_time", schema = "public", catalog = "pis-db")
 public class ShowTimeEntity {
     private int showtimeId;
     private Date date;
     private Time hour;
+    private MovieEntity movieByMovieId;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "showTimeGenerator")
+    @SequenceGenerator(name = "showTimeGenerator", sequenceName = "showtime_id_seq", allocationSize = 1)
     @Column(name = "showtime_id", nullable = false)
     public int getShowtimeId() {
         return showtimeId;
@@ -59,5 +62,15 @@ public class ShowTimeEntity {
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (hour != null ? hour.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "movie_id", referencedColumnName = "movie_id", nullable = false)
+    public MovieEntity getMovieByMovieId() {
+        return movieByMovieId;
+    }
+
+    public void setMovieByMovieId(MovieEntity movieByMovieId) {
+        this.movieByMovieId = movieByMovieId;
     }
 }

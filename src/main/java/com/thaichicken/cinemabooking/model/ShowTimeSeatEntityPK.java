@@ -10,6 +10,16 @@ public class ShowTimeSeatEntityPK implements Serializable {
     private int seatInRowNumber;
     private int cinemaHallNumber;
 
+    public ShowTimeSeatEntityPK() {
+    }
+
+    public ShowTimeSeatEntityPK(int showtimeId, int rowNumber, int seatInRowNumber, int cinemaHallNumber) {
+        this.showtimeId = showtimeId;
+        this.rowNumber = rowNumber;
+        this.seatInRowNumber = seatInRowNumber;
+        this.cinemaHallNumber = cinemaHallNumber;
+    }
+
     @Column(name = "showtime_id", nullable = false)
     @Id
     public int getShowtimeId() {

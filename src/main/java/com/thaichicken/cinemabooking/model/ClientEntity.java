@@ -3,7 +3,7 @@ package com.thaichicken.cinemabooking.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Client", schema = "public", catalog = "pis-db")
+@Table(name = "client", schema = "public", catalog = "pis-db")
 public class ClientEntity {
     private int clientId;
     private String name;
@@ -11,7 +11,19 @@ public class ClientEntity {
     private String email;
     private String phone;
 
+    public ClientEntity(String name, String surname, String email, String phone) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+    }
+
+    public ClientEntity() {
+    }
+
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "clientGenerator")
+    @SequenceGenerator(name = "clientGenerator", sequenceName = "client_id_seq", allocationSize = 1)
     @Column(name = "client_id", nullable = false)
     public int getClientId() {
         return clientId;

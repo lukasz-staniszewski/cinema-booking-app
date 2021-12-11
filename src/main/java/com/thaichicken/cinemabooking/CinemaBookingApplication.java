@@ -1,4 +1,5 @@
 package com.thaichicken.cinemabooking;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,16 @@ public class CinemaBookingApplication {
     public String welcomeWorld() {
         return "Hello world!";
     }
+
+//    @Bean
+//    public CommonsRequestLoggingFilter requestLoggingFilter() {
+//        CommonsRequestLoggingFilter loggingFilter = new CommonsRequestLoggingFilter();
+//        loggingFilter.setIncludeClientInfo(true);
+//        loggingFilter.setIncludeQueryString(true);
+//        loggingFilter.setIncludePayload(true);
+//        loggingFilter.setIncludeHeaders(false);
+//        return loggingFilter;
+//    }
 
 }
 
