@@ -1,8 +1,5 @@
-import {render, screen} from '@testing-library/react';
-import App from './App';
+import * as assert from "assert";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText("if you do /cinema_client/?client_id=CinemaClient in spring you get:");
-  expect(linkElement).toBeInTheDocument();
+test('tzw testy na frontendzie ;_)', () => {
+  assert.strictEqual(1,1);
 });

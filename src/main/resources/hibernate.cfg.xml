@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+      <property name="connection.url">jdbc:postgresql://localhost:5431/pis-db</property>
+      <property name="connection.driver_class">org.postgresql.Driver</property>
+      <property name="hibernate.hbm2ddl.auto">update</property>
+      <property name="connection.username">postgres</property>
+      <property name="connection.password">postgres</property>
+      <mapping class="com.thaichicken.cinemabooking.model.CinemaHallEntity"/>
+      <mapping class="com.thaichicken.cinemabooking.model.ClientEntity"/>
+      <mapping class="com.thaichicken.cinemabooking.model.HallSeatEntity"/>
+      <mapping class="com.thaichicken.cinemabooking.model.MovieEntity"/>
+      <mapping class="com.thaichicken.cinemabooking.model.ReservationEntity"/>
+      <mapping class="com.thaichicken.cinemabooking.model.ShowTimeEntity"/>
+      <mapping class="com.thaichicken.cinemabooking.model.ShowTimeSeatEntity"/>
+
+  </session-factory>
+</hibernate-configuration>
