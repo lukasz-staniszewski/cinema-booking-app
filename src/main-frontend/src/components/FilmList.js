@@ -12,7 +12,7 @@ const FilmList = (props) => {
         <Fragment>
             <ul className={classes[`offerts-list`]}>
                 {listShows.map((show) => (
-                    <Film show={show} key={show.showtime_id}/>
+                    <Film show={show} key={show.movieId}/>
                 ))}
             </ul>
         </Fragment>
