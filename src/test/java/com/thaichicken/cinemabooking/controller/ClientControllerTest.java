@@ -5,6 +5,7 @@ import com.thaichicken.cinemabooking.exception.ResourceNotFoundException;
 import com.thaichicken.cinemabooking.model.ClientEntity;
 import com.thaichicken.cinemabooking.model.ClientRole;
 import com.thaichicken.cinemabooking.repository.ClientRepository;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -16,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.util.LinkedMultiValueMap;
 
 import java.util.*;
 
@@ -75,11 +77,12 @@ public class ClientControllerTest {
         ClientEntity record = new ClientEntity("Cirilla", "Riannon", "ciri@mail.com", "999888777", "password", ClientRole.USER);
 
         Mockito.when(clientRepository.save(record)).thenReturn(record);
-
+        String recordStr = "{\"clientId\":0,\"name\":\"Cirilla\",\"surname\":\"Riannon\",\"email\":\"ciri@mail.com\",\"phone\":\"999888777\",\"password\":\"password\",\"clientRole\":\"USER\"}";
         MockHttpServletRequestBuilder mockRequest = post("/clients/client")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(record));
+                .content(recordStr);
+
 
         mockMvc.perform(mockRequest)
                 .andExpect(status().isOk())
@@ -94,10 +97,11 @@ public class ClientControllerTest {
         Mockito.when(clientRepository.findById(CLIENT_1.getClientId())).thenReturn(Optional.of(CLIENT_1));
         Mockito.when(clientRepository.save(record)).thenReturn(record);
 
+        String recordStr = "{\"clientId\":1,\"name\":\"Jaskier\",\"surname\":\"Jaskier\",\"email\":\"jaskier@mail.com\",\"phone\":\"999888777\",\"password\":\"password\",\"clientRole\":\"USER\"}";
         MockHttpServletRequestBuilder mockRequest = put("/clients/client/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(record));
+                .content(recordStr);
 
         mockMvc.perform(mockRequest)
                 .andExpect(status().isOk())
@@ -109,11 +113,14 @@ public class ClientControllerTest {
     public void updateClient_nullId() throws Exception {
         ClientEntity record = new ClientEntity("Jaskier", "Jaskier", "jaskier@mail.com", "999888777", "password", ClientRole.USER);
 
+        String recordStr = "{\"clientId\":0,\"name\":\"Jaskier\",\"surname\":\"Jaskier\",\"email\":\"jaskier@mail.com\",\"phone\":\"999888777\",\"password\":\"password\",\"clientRole\":\"USER\"}";
+
         MockHttpServletRequestBuilder mockRequest = put("/clients/client/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(record));
+                .content(recordStr);
 
+//        System.out.println(objectMapper.writeValueAsString(record));
         mockMvc.perform(mockRequest)
                 .andExpect(status().isNotFound())
                 .andExpect(result ->
@@ -125,11 +132,11 @@ public class ClientControllerTest {
     @Test
     public void updateClient_recordNotFound() throws Exception {
         ClientEntity record = new ClientEntity(5, "Jaskier", "Jaskier", "jaskier@mail.com", "999888777", "password", ClientRole.USER);
-
+        String recordStr = "{\"clientId\":5,\"name\":\"Jaskier\",\"surname\":\"Jaskier\",\"email\":\"jaskier@mail.com\",\"phone\":\"999888777\",\"password\":\"password\",\"clientRole\":\"USER\"}";
         MockHttpServletRequestBuilder mockRequest = put("/clients/client/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(record));
+                .content(recordStr);
 
         mockMvc.perform(mockRequest)
                 .andExpect(status().isNotFound())
