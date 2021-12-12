@@ -60,6 +60,7 @@ const RepertuarSite = () =>{
             console.log(err);
             console.log("Cant connect do database!");
         }
+        // eslint-disable-next-line
         }, [date]);
 
 
