@@ -3,6 +3,7 @@ package com.thaichicken.cinemabooking.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thaichicken.cinemabooking.exception.ResourceNotFoundException;
 import com.thaichicken.cinemabooking.model.ClientEntity;
+import com.thaichicken.cinemabooking.model.ClientRole;
 import com.thaichicken.cinemabooking.repository.ClientRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -41,8 +42,8 @@ public class ClientControllerTest {
     @MockBean
     private ClientRepository clientRepository;
 
-    ClientEntity CLIENT_1 = new ClientEntity(1, "Geralt", "ofRivia", "witcher@mail.com", "777666555");
-    ClientEntity CLIENT_2 = new ClientEntity(2, "Yenneffer", "ofVengerberg", "yenn@mail.com", "111222333");
+    ClientEntity CLIENT_1 = new ClientEntity(1, "Geralt", "ofRivia", "witcher@mail.com", "777666555", "password", ClientRole.USER);
+    ClientEntity CLIENT_2 = new ClientEntity(2, "Yenneffer", "ofVengerberg", "yenn@mail.com", "111222333", "password", ClientRole.USER);
 
     @Test
     public void getAllClients_success() throws Exception {
@@ -71,7 +72,7 @@ public class ClientControllerTest {
 
     @Test
     public void createClient_success() throws Exception {
-        ClientEntity record = new ClientEntity("Cirilla", "Riannon", "ciri@mail.com", "999888777");
+        ClientEntity record = new ClientEntity("Cirilla", "Riannon", "ciri@mail.com", "999888777", "password", ClientRole.USER);
 
         Mockito.when(clientRepository.save(record)).thenReturn(record);
 
@@ -88,7 +89,7 @@ public class ClientControllerTest {
 
     @Test
     public void updateClient_success() throws Exception {
-        ClientEntity record = new ClientEntity(1, "Jaskier", "Jaskier", "jaskier@mail.com", "999888777");
+        ClientEntity record = new ClientEntity(1, "Jaskier", "Jaskier", "jaskier@mail.com", "999888777", "password", ClientRole.USER);
 
         Mockito.when(clientRepository.findById(CLIENT_1.getClientId())).thenReturn(Optional.of(CLIENT_1));
         Mockito.when(clientRepository.save(record)).thenReturn(record);
@@ -106,7 +107,7 @@ public class ClientControllerTest {
 
     @Test
     public void updateClient_nullId() throws Exception {
-        ClientEntity record = new ClientEntity("Jaskier", "Jaskier", "jaskier@mail.com", "999888777");
+        ClientEntity record = new ClientEntity("Jaskier", "Jaskier", "jaskier@mail.com", "999888777", "password", ClientRole.USER);
 
         MockHttpServletRequestBuilder mockRequest = put("/clients/client/1")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -123,7 +124,7 @@ public class ClientControllerTest {
 
     @Test
     public void updateClient_recordNotFound() throws Exception {
-        ClientEntity record = new ClientEntity(5, "Jaskier", "Jaskier", "jaskier@mail.com", "999888777");
+        ClientEntity record = new ClientEntity(5, "Jaskier", "Jaskier", "jaskier@mail.com", "999888777", "password", ClientRole.USER);
 
         MockHttpServletRequestBuilder mockRequest = put("/clients/client/1")
                 .contentType(MediaType.APPLICATION_JSON)
