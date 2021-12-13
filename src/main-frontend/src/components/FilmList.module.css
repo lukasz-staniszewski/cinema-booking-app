@@ -1,14 +1,5 @@
 .offerts-list {
-    margin: 40px 0px;
-}
-.offerts-list li {
-    margin: 10px 0px;
-}
-@media (min-width: 1024px) {
-    .offerts-list {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: space-around;
-    }
+    width: 80%;
+    margin: 50px auto 0;
+    padding-bottom: 50px;
 }

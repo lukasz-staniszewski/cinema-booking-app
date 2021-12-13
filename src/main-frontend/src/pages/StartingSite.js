@@ -1,54 +1,16 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import logo from '../logo.svg';
-import './StartingSite.module.css';
-import Header from '../components/Header'
+import styles from './StartingSite.module.css';
+import {Link} from "react-router-dom";
 
 const StartingSite = () =>{
-    const[name, setName] = useState("Unknown");
-    const[message, setMessage] = useState(null);
-
-    const setInputNameHandler = (input_value)=>{
-        setName(input_value);
-    }
-
-    const fetchNameHandler = useCallback(async () => {
-        try{
-            const response_fetch = await fetch(`/cinema_client/?client_id=${name}`,
-                {headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    }});
-
-            if(!response_fetch.ok){
-                throw new Error("Fetch not ok!");
-            }
-            else {
-                const new_message_json = await response_fetch.json();
-                setMessage(new_message_json.content);
-            }
-        }
-        catch (err){
-            console.log("No backend connection only!");
-        }
-    }, [name]);
-
-
-    useEffect(()=>{
-        if (name){
-            fetchNameHandler();
-        }
-    }, [fetchNameHandler, name])
-
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <Header setInputNameFunction={setInputNameHandler}/>
-                <div className="ui main text container">
-                    <h3>if you do /cinema_client/?client_id={name} in backend you get:</h3>
-                    {message ? message : 'Cant fetch from backend...'}
+        <div className={styles.mainDiv}>
+            <div className={styles.textDiv}>
+                <div>
+                <h1>Twoje przyszle kino</h1>
+                <Link className={styles.btn} to={'/repertuar'}>Zobacz repertuar
+                </Link>
                 </div>
-            </header>
+            </div>
         </div>
     );
 }

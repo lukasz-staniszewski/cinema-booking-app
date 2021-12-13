@@ -3,10 +3,10 @@ import styles from "./MainNavigation.module.css"
 
 const MainNavigation = () =>{
     return(
-        <nav>
+        <nav className={styles.navigation}>
             <ul>
                 <li>
-                    <NavLink to="/" className={(data) => (data.isActive ? styles.active: "")}>Home</NavLink>
+                    <NavLink to="/" className={(data) => (data.isActive ? styles.active: "")}>Start</NavLink>
                 </li>
                 <li>
                     <NavLink to="/repertuar" className={(data) => (data.isActive ? styles.active: "")}> Repertuar</NavLink>

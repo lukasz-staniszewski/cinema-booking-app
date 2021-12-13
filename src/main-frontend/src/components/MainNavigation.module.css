@@ -1,3 +1,41 @@
-.active{
-    border: 2px solid red;
+.navigation {
+    background-color: black;
+    padding: 20px;
+    height: 59px;
+    border-bottom: 2px solid darkgray;
+}
+
+.navigation ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: grey;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.navigation ul li {
+    padding-inline: 10px;
+    transition: 0.4s;
+}
+
+.navigation ul li:hover{
+    color: #c42b2b;
+}
+
+.navigation ul li:first-child {
+    border-right: 1px solid darkgray;
+}
+
+.navigation ul .active{
+    color: white;
+}
+
+@media (min-width: 1440px){
+    .navigation{
+        font-size: 30px;
+        height: 80px;
+    }
+    .navigation ul li{
+        padding-inline: 25px;
+    }
 }
