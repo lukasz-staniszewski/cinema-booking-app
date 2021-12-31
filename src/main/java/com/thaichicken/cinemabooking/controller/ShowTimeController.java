@@ -2,7 +2,6 @@ package com.thaichicken.cinemabooking.controller;
 
 import com.thaichicken.cinemabooking.model.ShowTimeEntity;
 import com.thaichicken.cinemabooking.service.DefaultShowTimeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +14,11 @@ import java.util.List;
 @RequestMapping("show_times")
 public class ShowTimeController {
 
-    @Autowired
-    private DefaultShowTimeService showTimeService;
+    private final DefaultShowTimeService showTimeService;
+
+    public ShowTimeController(DefaultShowTimeService showTimeService) {
+        this.showTimeService = showTimeService;
+    }
 
     @GetMapping
     public List<ShowTimeEntity> getAllShowTimes() {

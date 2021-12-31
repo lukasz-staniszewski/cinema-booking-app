@@ -3,7 +3,6 @@ package com.thaichicken.cinemabooking.controller;
 import com.thaichicken.cinemabooking.model.HallSeatEntity;
 import com.thaichicken.cinemabooking.model.HallSeatEntityPK;
 import com.thaichicken.cinemabooking.service.DefaultHallSeatService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +13,11 @@ import java.util.List;
 @RequestMapping("hall_seats")
 public class HallSeatController {
 
-    @Autowired
-    private DefaultHallSeatService hallSeatService;
+    private final DefaultHallSeatService hallSeatService;
+
+    public HallSeatController(DefaultHallSeatService hallSeatService) {
+        this.hallSeatService = hallSeatService;
+    }
 
     @GetMapping
     public List<HallSeatEntity> getAllHallSeats() {

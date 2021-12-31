@@ -3,7 +3,6 @@ package com.thaichicken.cinemabooking.controller;
 
 import com.thaichicken.cinemabooking.model.ReservationEntity;
 import com.thaichicken.cinemabooking.service.DefaultReservationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +13,11 @@ import java.util.List;
 @RequestMapping("reservations")
 public class ReservationController {
 
-    @Autowired
-    private DefaultReservationService reservationService;
+    private final DefaultReservationService reservationService;
+
+    public ReservationController(DefaultReservationService reservationService) {
+        this.reservationService = reservationService;
+    }
 
     @GetMapping
     public List<ReservationEntity> getAllReservations() {

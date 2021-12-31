@@ -3,6 +3,7 @@ package com.thaichicken.cinemabooking.model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Objects;
 
 @Entity
 @Table(name = "show_time", schema = "public", catalog = "pis-db")
@@ -52,8 +53,8 @@ public class ShowTimeEntity {
         ShowTimeEntity that = (ShowTimeEntity) o;
 
         if (showtimeId != that.showtimeId) return false;
-        if (date != null ? !date.equals(that.date) : that.date != null) return false;
-        return hour != null ? hour.equals(that.hour) : that.hour == null;
+        if (!Objects.equals(date, that.date)) return false;
+        return Objects.equals(hour, that.hour);
     }
 
     @Override
