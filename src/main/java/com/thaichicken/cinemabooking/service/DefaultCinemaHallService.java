@@ -32,7 +32,6 @@ public class DefaultCinemaHallService implements CinemaHallService {
     public CinemaHallEntity updateCinemaHall(Integer id, CinemaHallEntity cinemaHall) {
         return cinemaHallRepository.findById(id)
                 .map(cinemaHall1 -> {
-                    cinemaHall1.setCapacity(cinemaHall.getCapacity());
                     cinemaHall1.setnRows(cinemaHall.getnRows());
                     cinemaHall1.setnSeatsInRows(cinemaHall.getnSeatsInRows());
                     return cinemaHallRepository.save(cinemaHall1);
