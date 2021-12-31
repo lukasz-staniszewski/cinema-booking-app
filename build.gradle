@@ -75,6 +75,7 @@ task uiRun(type: NpmTask) {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.6.1'
     implementation 'org.modelmapper:modelmapper-module-jsr310:1.2.2'
+    implementation 'org.jetbrains:annotations:20.1.0'
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.1'
