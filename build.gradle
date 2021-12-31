@@ -85,6 +85,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security:2.6.1'
     implementation 'org.springframework.boot:spring-boot-starter-mail:2.6.1'
     implementation 'org.modelmapper:modelmapper-module-java8:1.2.2'
+    implementation 'junit:junit:4.13.2'
 }
 
 task copyWebApp(type: Copy) {
