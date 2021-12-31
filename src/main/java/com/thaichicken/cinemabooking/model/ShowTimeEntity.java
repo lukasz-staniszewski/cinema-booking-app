@@ -12,6 +12,7 @@ public class ShowTimeEntity {
     private Date date;
     private Time hour;
     private MovieEntity movieByMovieId;
+    private CinemaHallEntity cinemaHallByCinemaHallNumber;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "showTimeGenerator")
@@ -73,5 +74,15 @@ public class ShowTimeEntity {
 
     public void setMovieByMovieId(MovieEntity movieByMovieId) {
         this.movieByMovieId = movieByMovieId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "cinema_hall_number", referencedColumnName = "cinema_hall_number")
+    public CinemaHallEntity getCinemaHallByCinemaHallNumber() {
+        return cinemaHallByCinemaHallNumber;
+    }
+
+    public void setCinemaHallByCinemaHallNumber(CinemaHallEntity cinemaHall) {
+        this.cinemaHallByCinemaHallNumber = cinemaHall;
     }
 }
