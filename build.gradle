@@ -82,6 +82,18 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.1'
     implementation 'org.springframework.boot:spring-boot-starter-security:2.6.1'
     implementation 'org.springframework.boot:spring-boot-starter-mail:2.6.1'
+
+    // For JWT
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2',
+            'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
+    // JWTVerivier com.google lib
+    implementation group: 'com.google.guava', name: 'guava', version: '11.0.2'
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.6.1'
+
+
 }
 
 task copyWebApp(type: Copy) {
