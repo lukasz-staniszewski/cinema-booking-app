@@ -88,7 +88,7 @@ public class ClientControllerTest {
 
 
         mockMvc.perform(mockRequest)
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$", notNullValue()))
                 .andExpect(jsonPath("$.name").value("Cirilla"));
     }

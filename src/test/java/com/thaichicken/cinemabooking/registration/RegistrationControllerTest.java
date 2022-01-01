@@ -40,8 +40,8 @@ public class RegistrationControllerTest {
     @Test
     public void registrationSuccess() throws Exception{
         String registrationStr = "{\"name\":\"Jaskier\",\"surname\":\"Jaskier\",\"email\":\"jaskier@mail.com\",\"phone\":\"999888777\",\"password\":\"password\"}";
-        ClientEntity record = new ClientEntity("Jaskier", "Jaskier", "jaskier@mail.com", "999888777", "password", ClientRole.USER);
-        Mockito.when(clientService.signUpClient(record)).thenReturn("12345");
+//        ClientEntity record = new ClientEntity("Jaskier", "Jaskier", "jaskier@mail.com", "999888777", "password", ClientRole.USER);
+//        Mockito.when(clientService.signUpClient(record)).thenReturn("12345");
 
         MockHttpServletRequestBuilder mockRequest = post("/registration")
                 .contentType(MediaType.APPLICATION_JSON)
