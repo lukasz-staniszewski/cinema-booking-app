@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "cinema_hall", schema = "public", catalog = "pis-db")
 public class CinemaHallEntity {
     private int cinemaHallNumber;
-    private int capacity;
     private int nRows;
     private int nSeatsInRows;
 
@@ -15,7 +14,6 @@ public class CinemaHallEntity {
 
     public CinemaHallEntity(int cinemaHallNumber, int capacity, int nRows, int nSeatsInRows) {
         this.cinemaHallNumber = cinemaHallNumber;
-        this.capacity = capacity;
         this.nRows = nRows;
         this.nSeatsInRows = nSeatsInRows;
     }
@@ -28,16 +26,6 @@ public class CinemaHallEntity {
 
     public void setCinemaHallNumber(int cinemaHallNumber) {
         this.cinemaHallNumber = cinemaHallNumber;
-    }
-
-    @Basic
-    @Column(name = "capacity", nullable = true)
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
     }
 
     @Basic
@@ -68,7 +56,6 @@ public class CinemaHallEntity {
         CinemaHallEntity that = (CinemaHallEntity) o;
 
         if (cinemaHallNumber != that.cinemaHallNumber) return false;
-        if (capacity != that.capacity) return false;
         if (nRows != that.nRows) return false;
         return nSeatsInRows == that.nSeatsInRows;
     }
@@ -76,7 +63,6 @@ public class CinemaHallEntity {
     @Override
     public int hashCode() {
         int result = cinemaHallNumber;
-        result = 31 * result + capacity;
         result = 31 * result + nRows;
         result = 31 * result + nSeatsInRows;
         return result;
