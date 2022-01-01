@@ -3,6 +3,7 @@ package com.thaichicken.cinemabooking.model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Objects;
 
 @Entity
 @Table(name = "show_time", schema = "public", catalog = "pis-db")
@@ -11,6 +12,7 @@ public class ShowTimeEntity {
     private Date date;
     private Time hour;
     private MovieEntity movieByMovieId;
+    private CinemaHallEntity cinemaHallByCinemaHallNumber;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "showTimeGenerator")
@@ -52,8 +54,8 @@ public class ShowTimeEntity {
         ShowTimeEntity that = (ShowTimeEntity) o;
 
         if (showtimeId != that.showtimeId) return false;
-        if (date != null ? !date.equals(that.date) : that.date != null) return false;
-        return hour != null ? hour.equals(that.hour) : that.hour == null;
+        if (!Objects.equals(date, that.date)) return false;
+        return Objects.equals(hour, that.hour);
     }
 
     @Override
@@ -72,5 +74,15 @@ public class ShowTimeEntity {
 
     public void setMovieByMovieId(MovieEntity movieByMovieId) {
         this.movieByMovieId = movieByMovieId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "cinema_hall_number", referencedColumnName = "cinema_hall_number")
+    public CinemaHallEntity getCinemaHallByCinemaHallNumber() {
+        return cinemaHallByCinemaHallNumber;
+    }
+
+    public void setCinemaHallByCinemaHallNumber(CinemaHallEntity cinemaHall) {
+        this.cinemaHallByCinemaHallNumber = cinemaHall;
     }
 }

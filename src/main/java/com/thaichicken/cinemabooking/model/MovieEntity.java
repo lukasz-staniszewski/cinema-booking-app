@@ -1,6 +1,7 @@
 package com.thaichicken.cinemabooking.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "movie", schema = "public", catalog = "pis-db")
@@ -93,13 +94,13 @@ public class MovieEntity {
         MovieEntity that = (MovieEntity) o;
 
         if (movieId != that.movieId) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (length != null ? !length.equals(that.length) : that.length != null) return false;
-        if (productionYear != null ? !productionYear.equals(that.productionYear) : that.productionYear != null)
+        if (!Objects.equals(name, that.name)) return false;
+        if (!Objects.equals(description, that.description)) return false;
+        if (!Objects.equals(length, that.length)) return false;
+        if (!Objects.equals(productionYear, that.productionYear))
             return false;
-        if (type != null ? !type.equals(that.type) : that.type != null) return false;
-        return director != null ? director.equals(that.director) : that.director == null;
+        if (!Objects.equals(type, that.type)) return false;
+        return Objects.equals(director, that.director);
     }
 
     @Override

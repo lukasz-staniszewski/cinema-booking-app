@@ -5,7 +5,6 @@ import com.thaichicken.cinemabooking.exception.ResourceNotFoundException;
 import com.thaichicken.cinemabooking.model.HallSeatEntity;
 import com.thaichicken.cinemabooking.model.HallSeatEntityPK;
 import com.thaichicken.cinemabooking.repository.HallSeatRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +13,11 @@ import java.util.Optional;
 @Service
 public class DefaultHallSeatService implements HallSeatService {
 
-    @Autowired
-    private HallSeatRepository hallSeatRepository;
+    private final HallSeatRepository hallSeatRepository;
+
+    public DefaultHallSeatService(HallSeatRepository hallSeatRepository) {
+        this.hallSeatRepository = hallSeatRepository;
+    }
 
     @Override
     public HallSeatEntity createHallSeat(HallSeatEntity hallSeat) {

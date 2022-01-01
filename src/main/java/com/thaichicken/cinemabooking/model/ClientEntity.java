@@ -37,17 +37,17 @@ public class ClientEntity implements UserDetails {
     @Column(name = "phone", nullable = false, length = 9)
     private String phone;
 
-    @Column(name = "password", nullable = true)
+    @Column(name = "password")
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "client_role", nullable = true, length = 9)
+    @Column(name = "client_role", length = 9)
     private ClientRole clientRole;
 
-    @Column(name = "locked", nullable = true)
+    @Column(name = "locked")
     private Boolean locked = false;
 
-    @Column(name = "enabled", nullable = true)
+    @Column(name = "enabled")
     private Boolean enabled = false;
 
     public ClientEntity(int clientId, String name, String surname, String email, String phone, String password, ClientRole clientRole) {

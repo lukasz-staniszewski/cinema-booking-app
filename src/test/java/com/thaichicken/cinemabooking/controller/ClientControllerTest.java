@@ -5,7 +5,6 @@ import com.thaichicken.cinemabooking.exception.ResourceNotFoundException;
 import com.thaichicken.cinemabooking.model.ClientEntity;
 import com.thaichicken.cinemabooking.model.ClientRole;
 import com.thaichicken.cinemabooking.repository.ClientRepository;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -19,7 +18,6 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.util.LinkedMultiValueMap;
 
 import java.util.*;
 
@@ -46,8 +44,8 @@ public class ClientControllerTest {
     @MockBean
     private ClientRepository clientRepository;
 
-    ClientEntity CLIENT_1 = new ClientEntity(1, "Geralt", "ofRivia", "witcher@mail.com", "777666555", "password", ClientRole.USER);
-    ClientEntity CLIENT_2 = new ClientEntity(2, "Yenneffer", "ofVengerberg", "yenn@mail.com", "111222333", "password", ClientRole.USER);
+    final ClientEntity CLIENT_1 = new ClientEntity(1, "Geralt", "ofRivia", "witcher@mail.com", "777666555", "password", ClientRole.USER);
+    final ClientEntity CLIENT_2 = new ClientEntity(2, "Yenneffer", "ofVengerberg", "yenn@mail.com", "111222333", "password", ClientRole.USER);
 
     @Test
     @WithMockUser
