@@ -31,7 +31,7 @@ public class CinemaHallEntity {
     }
 
     @Basic
-    @Column(name = "capacity", nullable = false)
+    @Column(name = "capacity", nullable = true)
     public int getCapacity() {
         return capacity;
     }

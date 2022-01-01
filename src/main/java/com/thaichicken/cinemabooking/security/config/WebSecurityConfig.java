@@ -31,20 +31,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf()
-                .disable()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
-                .addFilterAfter(new JwtTokenVerifier(secretKey, jwtConfig),  JwtUsernameAndPasswordAuthenticationFilter.class)
-                .authorizeRequests()
-                .antMatchers("/cinema_halls").authenticated()
-    //hasRole(String.valueOf(ClientRole.USER))
-                .antMatchers("/**").permitAll()
-                .anyRequest()
-                .authenticated();
+        http.csrf().disable();
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.authorizeRequests().antMatchers("/registration").permitAll();
+        http.authorizeRequests().antMatchers("/movies").hasAuthority("ADMIN");
+        http.authorizeRequests().anyRequest().authenticated();
+        http.addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfig, secretKey));
+        http.addFilterBefore(new JwtTokenVerifier(secretKey, jwtConfig),  JwtUsernameAndPasswordAuthenticationFilter.class);
     }
 
     @Override

@@ -11,9 +11,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -48,6 +50,7 @@ public class ClientControllerTest {
     ClientEntity CLIENT_2 = new ClientEntity(2, "Yenneffer", "ofVengerberg", "yenn@mail.com", "111222333", "password", ClientRole.USER);
 
     @Test
+    @WithMockUser
     public void getAllClients_success() throws Exception {
         List<ClientEntity> records = new ArrayList<>(Arrays.asList(CLIENT_1, CLIENT_2));
 
@@ -62,6 +65,7 @@ public class ClientControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void getClientById_success() throws Exception {
         Mockito.when(clientRepository.findById(CLIENT_1.getClientId())).thenReturn(Optional.of(CLIENT_1));
 
@@ -73,6 +77,7 @@ public class ClientControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void createClient_success() throws Exception {
         ClientEntity record = new ClientEntity("Cirilla", "Riannon", "ciri@mail.com", "999888777", "password", ClientRole.USER);
 
@@ -91,6 +96,7 @@ public class ClientControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void updateClient_success() throws Exception {
         ClientEntity record = new ClientEntity(1, "Jaskier", "Jaskier", "jaskier@mail.com", "999888777", "password", ClientRole.USER);
 
@@ -110,6 +116,7 @@ public class ClientControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void updateClient_nullId() throws Exception {
         ClientEntity record = new ClientEntity("Jaskier", "Jaskier", "jaskier@mail.com", "999888777", "password", ClientRole.USER);
 
@@ -130,6 +137,7 @@ public class ClientControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void updateClient_recordNotFound() throws Exception {
         ClientEntity record = new ClientEntity(5, "Jaskier", "Jaskier", "jaskier@mail.com", "999888777", "password", ClientRole.USER);
         String recordStr = "{\"clientId\":5,\"name\":\"Jaskier\",\"surname\":\"Jaskier\",\"email\":\"jaskier@mail.com\",\"phone\":\"999888777\",\"password\":\"password\",\"clientRole\":\"USER\"}";
@@ -145,6 +153,7 @@ public class ClientControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void deleteClient_success() throws Exception {
         Mockito.when(clientRepository.findById(CLIENT_2.getClientId())).thenReturn(Optional.of(CLIENT_2));
 
@@ -154,6 +163,7 @@ public class ClientControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void deleteClient_idNotFound() throws Exception {
         // Mockito.when(clientRepository.findById(5)).thenReturn(null);
 
