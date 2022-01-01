@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
                 .addFilterAfter(new JwtTokenVerifier(secretKey, jwtConfig),  JwtUsernameAndPasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/cinema_halls").authenticated()
+                .antMatchers("/cinema_halls").permitAll()
     //hasRole(String.valueOf(ClientRole.USER))
                 .antMatchers("/**").permitAll()
                 .anyRequest()
