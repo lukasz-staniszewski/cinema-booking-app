@@ -1,6 +1,8 @@
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useContext, useEffect, useState} from "react";
 import styles from "./CinemaHallSite.module.css";
 import {useLocation} from "react-router-dom";
+import AuthContext from "../components/store/auth-context";
+import jwt_decode from "jwt-decode";
 
 const CinemaHallSite = ()=>{
     const [rows, setRows] = useState();
@@ -9,6 +11,56 @@ const CinemaHallSite = ()=>{
     const [choosePlace, setChoosePlace] = useState([]);
     const location = useLocation();
     const {showtimeInfo} = location.state;
+    const authCtx = useContext(AuthContext);
+
+    const performReservation = () =>{
+        let today = new Date();
+        let date = today.getFullYear()+'-'+('0' + today.getMonth()+1).slice(-2)+'-'+('0' + today.getDate()).slice(-2);
+        let seats_list = [];
+        choosePlace.map((item)=>{
+            let seat_info = item.split(' ');
+            seats_list.push(
+                {
+                    rowNumber: parseInt(seat_info[0], 10),
+                    seatInRowNumber: parseInt(seat_info[1],10),
+                    cinemaHallNumber: showtimeInfo.cinemaHallNumber,
+                }
+            )
+        })
+        if (checkCanReservate()){
+            let fetch_json = {
+               timestamp: date,
+                clientEmail: mailFromJWT(),
+                showTimeId: showtimeInfo.showtimeId,
+                reservationSeats: seats_list,
+            }
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': authCtx.token},
+                body: JSON.stringify(fetch_json)
+            };
+            fetch(' /reservations/reservation', requestOptions).then((response)=>{
+                if (!response.ok){
+                    console.log("Reservation not gucci!");
+                }
+                else {
+                    console.log("Reservation gucci!")
+                }
+            });
+        }
+    }
+
+    const mailFromJWT = () =>{
+        if (authCtx.isUserLogged) {
+            const decoded = jwt_decode(authCtx.token);
+            return decoded.sub;
+        }
+        else{
+            console.log("User is not logged to get mail from token!");
+        }
+    }
 
     const fetchFullHall = useCallback(async () => {
         try{
@@ -33,6 +85,10 @@ const CinemaHallSite = ()=>{
         }
         // eslint-disable-next-line
     }, []);
+
+    const checkCanReservate = () =>{
+        return choosePlace.length > 0 && authCtx.isUserLogged;
+    }
 
     const fetchReservations = useCallback(async () => {
         try{
@@ -82,8 +138,6 @@ const CinemaHallSite = ()=>{
         }
         return "";
     }
-    console.log("NUMBER OF HALL:")
-    console.log(showtimeInfo.cinemaHallNumber);
     useEffect(()=> {
         fetchFullHall();
         fetchReservations();
@@ -92,28 +146,31 @@ const CinemaHallSite = ()=>{
     return (
         <div className={styles.hall}>
             <div>
-            {[...Array(rows).keys()].map((row) => (
-                <div className={styles.row} key={`${row}`}>
-                    {[...Array(columns).keys()].map((column) => (
-                        <button
-                            className={
-                                chairColor(row, column)
-                            }
-                            onClick={choosePlaceHandler}
-                            key={`${row} ${column}`}
-                            id={`${row} ${column}`}
-                            disabled={reservatedSeats.includes(`${row} ${column}`) ? true :false}
-                        >
-                            <i id={`${row} ${column}`} className="fas fa-couch"/>
-                        </button>
-                    ))}
+                {[...Array(rows).keys()].map((row) => (
+                    <div className={styles.row} key={`${row}`}>
+                        {[...Array(columns).keys()].map((column) => (
+                            <button
+                                className={
+                                    chairColor(rows-(row), column+1)
+                                }
+                                onClick={choosePlaceHandler}
+                                key={`${rows-(row)} ${column+1}`}
+                                id={`${rows-(row)} ${column+1}`}
+                                disabled={reservatedSeats.includes(`${rows-(row)} ${column+1}`) ? true :false}
+                            >
+                                <i id={`${rows-(row)} ${column+1}`} className="fas fa-couch"/>
+                            </button>
+                        ))}
+                    </div>
+                ))}
+                <div className={styles.screen}>
+                    <p>ekran</p>
+                    <div></div>
                 </div>
-            ))}
-            <div className={styles.screen}>
-                <p>ekran</p>
-                <div></div>
             </div>
-            </div>
+            <button className={checkCanReservate() ? '' : styles['locked']} onClick={performReservation} disabled={!checkCanReservate()}>
+                Zarezerwuj
+            </button>
         </div>
     );
 }

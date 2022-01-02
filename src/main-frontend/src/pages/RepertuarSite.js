@@ -5,7 +5,7 @@ import classes from "./RepertuarSite.module.css";
 
 const RepertuarSite = () =>{
     const[data, setData] = useState([]);
-    const[date, setDate] = useState("2021-10-10");
+    const[date, setDate] = useState("2021-12-13");
 
     const setDateHandler = (newDate) => {
         setDate(newDate);

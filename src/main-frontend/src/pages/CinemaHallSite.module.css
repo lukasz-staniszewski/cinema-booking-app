@@ -5,8 +5,24 @@
     align-items: center;
     background-color: black;
     min-height: 100vh;
-
 }
+
+.hall>button{
+    margin-top: 10px;
+    color: white;
+    background-color: var(--dark-red);
+    font-family: 'Roboto', sans-serif;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.hall>button.locked{
+    color: lightgray;
+    background-color: darkgray;
+}
+
+
 .row {
     display: flex;
     flex-direction: row;
