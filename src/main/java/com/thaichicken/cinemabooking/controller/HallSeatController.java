@@ -3,6 +3,7 @@ package com.thaichicken.cinemabooking.controller;
 import com.thaichicken.cinemabooking.dto.HallSeatDTO;
 import com.thaichicken.cinemabooking.model.HallSeatEntity;
 import com.thaichicken.cinemabooking.model.HallSeatEntityPK;
+import com.thaichicken.cinemabooking.service.DefaultCinemaHallService;
 import com.thaichicken.cinemabooking.service.DefaultHallSeatService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -18,11 +19,14 @@ public class HallSeatController {
 
     private final ModelMapper modelMapper;
 
+    private final DefaultCinemaHallService cinemaHallService;
+
     private final DefaultHallSeatService hallSeatService;
 
-    public HallSeatController(DefaultHallSeatService hallSeatService, ModelMapper modelMapper) {
+    public HallSeatController(DefaultHallSeatService hallSeatService, ModelMapper modelMapper, DefaultCinemaHallService cinemaHallService) {
         this.hallSeatService = hallSeatService;
         this.modelMapper = modelMapper;
+        this.cinemaHallService = cinemaHallService;
     }
 
     @GetMapping
@@ -65,6 +69,8 @@ public class HallSeatController {
     }
 
     private HallSeatEntity convertToEntity(HallSeatDTO hallSeatDTO) {
-        return modelMapper.map(hallSeatDTO, HallSeatEntity.class);
+        HallSeatEntity hallSeat = modelMapper.map(hallSeatDTO, HallSeatEntity.class);
+        hallSeat.setCinemaHallByCinemaHallNumber(cinemaHallService.getCinemaHallById(hallSeat.getCinemaHallNumber()));
+        return hallSeat;
     }
 }
