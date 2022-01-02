@@ -1,4 +1,5 @@
 import classes from "./Film.module.css";
+import {Link} from "react-router-dom";
 
 const Film = (props) => {
     const convertHour = (hour) =>{
@@ -17,7 +18,7 @@ const Film = (props) => {
             </ul>
             {props.show.description && <p>{props.show.description}</p>}
             <ul className={classes.hours}>
-                    {props.show.hour.map(item=><li>{convertHour(item)}</li>)}
+                    {props.show.hour.map(item=><Link to="/rezerwacja">{convertHour(item)}</Link>)}
             </ul>
         </li>
     );

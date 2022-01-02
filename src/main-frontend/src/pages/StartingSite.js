@@ -6,7 +6,7 @@ const StartingSite = () =>{
         <div className={styles.mainDiv}>
             <div className={styles.textDiv}>
                 <div>
-                <h1>Twoje przyszle kino</h1>
+                <h1>Twoje przyszłe kino</h1>
                 <Link className={styles.btn} to={'/repertuar'}>Zobacz repertuar
                 </Link>
                 </div>

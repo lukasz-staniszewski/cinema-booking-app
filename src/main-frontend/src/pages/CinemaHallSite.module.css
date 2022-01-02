@@ -1,0 +1,27 @@
+.hall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    margin: 10px;
+}
+
+.row button {
+    background-color: grey;
+    text-align: center;
+    aspect-ratio: 1/1;
+    border: none;
+    border-radius: 5px;
+}
+
+.row button.active {
+    background-color: lawngreen;
+}
+
+.row button.occupied {
+    background-color: red;
+}

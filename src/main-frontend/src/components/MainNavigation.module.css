@@ -3,16 +3,40 @@
     padding: 20px;
     height: 59px;
     border-bottom: 2px solid darkgray;
+    font-size: 15px;
 }
 
 .navigation ul {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     color: grey;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+.navigation ul button{
+    color: grey;
+    text-transform: uppercase;
+    background: none;
+    transition: 0.4s;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navigation ul button.log-reg-fs {
+    font-size: 8px;
+}
+
+.navigation ul button:hover{
+    color: #c42b2b;
+}
+
+.buttonwrapper{
+    display: flex;
+    align-items: center;
+}
+
 .navigation ul li {
     padding-inline: 10px;
     transition: 0.4s;
@@ -22,7 +46,7 @@
     color: #c42b2b;
 }
 
-.navigation ul li:first-child {
+.navigation ul li:not(:last-child) {
     border-right: 1px solid darkgray;
 }
 
@@ -30,12 +54,105 @@
     color: white;
 }
 
-@media (min-width: 1440px){
+@media (orientation: portrait) and (min-width: 360px){
+    .navigation{
+        font-size: 20px;
+        height: 65px;
+    }
+    .navigation ul li{
+        padding-inline: 10px;
+    }
+    .navigation ul button{
+        font-size: 20px;
+    }
+
+    .navigation ul button.log-reg-fs {
+        font-size: 10px;
+    }
+}
+
+@media (orientation: portrait) and (min-width: 760px){
     .navigation{
         font-size: 30px;
         height: 80px;
     }
     .navigation ul li{
-        padding-inline: 25px;
+        padding-inline: 20px;
+    }
+    .navigation ul button{
+        font-size: 30px;
+    }
+
+    .navigation ul button.log-reg-fs {
+        font-size: 15px;
+    }
+}
+
+@media (orientation: portrait) and (min-width: 1000px){
+    .navigation{
+        font-size: 50px;
+        height: 100px;
+    }
+    .navigation ul li{
+        padding-inline: 35px;
+    }
+    .navigation ul button{
+        font-size: 50px;
+    }
+
+    .navigation ul button.log-reg-fs {
+        font-size: 25px;
+    }
+}
+
+
+@media (orientation: landscape) and (min-width: 500px){
+    .navigation{
+        font-size: 25px;
+        height: 70px;
+    }
+    .navigation ul li{
+        padding-inline: 18px;
+    }
+    .navigation ul button{
+        font-size: 25px;
+    }
+
+    .navigation ul button.log-reg-fs {
+        font-size: 13px;
+    }
+}
+
+@media (orientation: landscape) and (min-width: 1000px){
+    .navigation{
+        font-size: 35px;
+        height: 90px;
+    }
+    .navigation ul li{
+        padding-inline: 24px;
+    }
+    .navigation ul button{
+        font-size: 35px;
+    }
+
+    .navigation ul button.log-reg-fs {
+        font-size: 18px;
+    }
+}
+
+@media (orientation: landscape) and (min-width: 1440px){
+    .navigation{
+        font-size: 50px;
+        height: 95px;
+    }
+    .navigation ul li {
+        padding-inline: 35px;
+    }
+    .navigation ul button{
+        font-size: 50px;
+    }
+
+    .navigation ul button.log-reg-fs {
+        font-size: 25px;
     }
 }

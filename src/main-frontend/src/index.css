@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
+:root {
+  --dark-red: darkred;
+  --bgc-main: black;
+  --fc-main: white;
+}
+
+
+
 *,
 *::before,
 *::after {
@@ -39,9 +47,5 @@ button:hover {
 
 body{
   overflow-x: hidden;
-}
-
-img{
-  height: 100vh;
 }
 
