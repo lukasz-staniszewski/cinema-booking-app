@@ -58,12 +58,10 @@ public class DefaultReservationServiceIntegrationTest {
 
     @Test
     public void whenGetAllReservations_thenAllReservationsShouldBeFound() {
-        ReservationEntity reservation1 = new ReservationEntity();
-        reservation1.setReservationId(1);
-        ReservationEntity reservation2 = new ReservationEntity();
-        reservation2.setReservationId(2);
-        List<ReservationEntity> allReservations = Arrays.asList(reservation1, reservation2);
-        Assertions.assertEquals(allReservations, reservationService.getAllReservations());
+        List<ReservationEntity> foundReservations = reservationService.getAllReservations();
+        Assertions.assertEquals(2, foundReservations.size());
+        Assertions.assertEquals(1, foundReservations.get(0).getReservationId());
+        Assertions.assertEquals(2, foundReservations.get(1).getReservationId());
     }
 
     @Test
