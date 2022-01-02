@@ -38,7 +38,7 @@
     column-gap: 7px;
 }
 
-.hours li {
+.hours a {
     border: 2px solid #c42b2b;
     padding: 8px 12px;
 }

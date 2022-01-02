@@ -13,13 +13,26 @@ const LoginForm = (props) =>{
 
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
-
-        // TODO: fetch which performs logging (probably post)
-        authCtx.login("TOKEN");
-        console.log("Email: ", enteredEmail, " | Password: ", enteredPassword);
-        navigate('/');
-        console.log("tutaj");
-        props.onClose();
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: enteredEmail,
+                password: enteredPassword
+            })
+        };
+        fetch('login', requestOptions).then((response)=>{
+            if (!response.ok){
+                console.log("Login not gucci");
+            }
+            else {
+                return response
+            }}).then((data)=>{
+                console.log("Login gucci!")
+                authCtx.login(data.headers.get('Authorization'));
+                navigate('/');
+                props.onClose();
+        });
     }
 
     return(

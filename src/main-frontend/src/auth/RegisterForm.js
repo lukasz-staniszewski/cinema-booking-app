@@ -50,8 +50,7 @@ const RegisterForm = (props) =>{
             }
         });
 
-
-        // setIsRegistered(true);
+        setIsRegistered(true);
 
         // TODO: fetch will work but need some repair
     }

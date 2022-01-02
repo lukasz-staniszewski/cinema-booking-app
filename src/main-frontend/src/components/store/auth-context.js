@@ -12,7 +12,7 @@ export const AuthContextProvider = (props) => {
 
     let initialToken;
     if (tokenData) {
-        initialToken = tokenData.token;
+        initialToken = tokenData;
     }
 
     const [token, setToken] = useState(initialToken);

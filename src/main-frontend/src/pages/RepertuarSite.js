@@ -5,7 +5,7 @@ import classes from "./RepertuarSite.module.css";
 
 const RepertuarSite = () =>{
     const[data, setData] = useState([]);
-    const[date, setDate] = useState("2021-12-13");
+    const[date, setDate] = useState("2021-10-10");
 
     const setDateHandler = (newDate) => {
         setDate(newDate);
@@ -29,12 +29,12 @@ const RepertuarSite = () =>{
 
     const changeShowtimesJson = (inpJson) =>{
         let inpJsonFlatten = [...inpJson.map((item) => flattenObj(item))];
-        return inpJsonFlatten.reduce((acc, {movieId, name, description, length, productionYear, type, director, hour}) => {
+        return inpJsonFlatten.reduce((acc, {movieId, name, date, description, length, productionYear, type, director, hour, showtimeId, cinemaHallNumber}) => {
             const existing = acc.find(i => i.movieId === movieId)
             if (existing) {
-                existing.hour.push(hour)
+                existing.showtimeInfo.push({hour: hour, showtimeId: showtimeId, cinemaHallNumber: cinemaHallNumber})
             } else {
-                acc.push({movieId, name, description, length, productionYear, type, director, hour: [hour]})
+                acc.push({movieId, name, description, length, productionYear, type, director, showtimeInfo: [{hour: hour, showtimeId: showtimeId, cinemaHallNumber: cinemaHallNumber}]})
             }
             return acc
         }, []);
