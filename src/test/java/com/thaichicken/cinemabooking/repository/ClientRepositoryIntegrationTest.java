@@ -55,21 +55,6 @@ public class ClientRepositoryIntegrationTest {
     }
 
     @Test
-    public void givenSetOfClients_whenFindAll_thenReturnAllClients() {
-        ClientEntity CLIENT_1 = new ClientEntity("Geralt", "ofRivia", "witcher@mail.com", "777666555", "password", ClientRole.USER);
-        ClientEntity CLIENT_2 = new ClientEntity("Yenneffer", "ofVengerberg", "yenn@mail.com", "111222333", "password", ClientRole.USER);
-        ClientEntity CLIENT_3 = new ClientEntity("Cirilla", "Riannon", "ciri@mail.com", "999888777", "password", ClientRole.USER);
-
-        entityManager.persist(CLIENT_1);
-        entityManager.persist(CLIENT_2);
-        entityManager.persist(CLIENT_3);
-        entityManager.flush();
-
-        List<ClientEntity> allClients = clientRepository.findAll();
-        assertThat(allClients).extracting(ClientEntity::getName).contains(CLIENT_1.getName(), CLIENT_2.getName(), CLIENT_3.getName());
-    }
-
-    @Test
     public void whenInvalidId_thenReturnNull() {
         Optional<ClientEntity> found = clientRepository.findById(-2);
         found.ifPresent(Assertions::assertNull);
