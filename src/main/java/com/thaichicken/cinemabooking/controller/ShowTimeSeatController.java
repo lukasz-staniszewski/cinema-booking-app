@@ -3,7 +3,6 @@ package com.thaichicken.cinemabooking.controller;
 import com.thaichicken.cinemabooking.model.ShowTimeSeatEntity;
 import com.thaichicken.cinemabooking.model.ShowTimeSeatEntityPK;
 import com.thaichicken.cinemabooking.service.DefaultShowTimeSeatService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +13,11 @@ import java.util.List;
 @RequestMapping("show_time_seats")
 public class ShowTimeSeatController {
 
-    @Autowired
-    private DefaultShowTimeSeatService showTimeSeatService;
+    private final DefaultShowTimeSeatService showTimeSeatService;
+
+    public ShowTimeSeatController(DefaultShowTimeSeatService showTimeSeatService) {
+        this.showTimeSeatService = showTimeSeatService;
+    }
 
     @GetMapping
     public List<ShowTimeSeatEntity> getAllShowTimeSeats() {

@@ -3,7 +3,6 @@ package com.thaichicken.cinemabooking.service;
 import com.thaichicken.cinemabooking.exception.ResourceNotFoundException;
 import com.thaichicken.cinemabooking.model.ShowTimeEntity;
 import com.thaichicken.cinemabooking.repository.ShowTimeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -12,8 +11,11 @@ import java.util.List;
 @Service
 public class DefaultShowTimeService implements ShowTimeService {
 
-    @Autowired
-    private ShowTimeRepository showTimeRepository;
+    private final ShowTimeRepository showTimeRepository;
+
+    public DefaultShowTimeService(ShowTimeRepository showTimeRepository) {
+        this.showTimeRepository = showTimeRepository;
+    }
 
     @Override
     public ShowTimeEntity createShowTime(ShowTimeEntity showTime) {

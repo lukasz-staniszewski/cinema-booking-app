@@ -4,7 +4,6 @@ import com.thaichicken.cinemabooking.exception.ResourceAlreadyExistsException;
 import com.thaichicken.cinemabooking.exception.ResourceNotFoundException;
 import com.thaichicken.cinemabooking.model.CinemaHallEntity;
 import com.thaichicken.cinemabooking.repository.CinemaHallRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +12,11 @@ import java.util.Optional;
 @Service
 public class DefaultCinemaHallService implements CinemaHallService {
 
-    @Autowired
-    private CinemaHallRepository cinemaHallRepository;
+    private final CinemaHallRepository cinemaHallRepository;
+
+    public DefaultCinemaHallService(CinemaHallRepository cinemaHallRepository) {
+        this.cinemaHallRepository = cinemaHallRepository;
+    }
 
     @Override
     public CinemaHallEntity createCinemaHall(CinemaHallEntity cinemaHall) {
@@ -30,7 +32,6 @@ public class DefaultCinemaHallService implements CinemaHallService {
     public CinemaHallEntity updateCinemaHall(Integer id, CinemaHallEntity cinemaHall) {
         return cinemaHallRepository.findById(id)
                 .map(cinemaHall1 -> {
-                    cinemaHall1.setCapacity(cinemaHall.getCapacity());
                     cinemaHall1.setnRows(cinemaHall.getnRows());
                     cinemaHall1.setnSeatsInRows(cinemaHall.getnSeatsInRows());
                     return cinemaHallRepository.save(cinemaHall1);
