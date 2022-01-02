@@ -57,6 +57,15 @@ public class ShowTimeSeatController {
         return convertToDto(showTimeSeatService.getShowTimeSeatById(new ShowTimeSeatEntityPK(showTimeId, rowNumber, seatInRowNumber, cinemaHallNumber)));
     }
 
+    @GetMapping("/showtime_id")
+    @ResponseBody
+    public List<ShowTimeSeatDTO> getShowTimeSeatByShowtimeId(@RequestParam(name = "show_time_id") Integer showTimeId) {
+        List<ShowTimeSeatEntity> showTimeSeatEntities = showTimeSeatService.getAllShowTimeSeatsByShowtimeId(showTimeId);
+        return showTimeSeatEntities.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
     @PostMapping("/show_time_seat")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
