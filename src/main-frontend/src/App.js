@@ -1,20 +1,25 @@
-import './App.css';
 import {Routes, Route, Navigate} from "react-router-dom";
 import Layout from "./components/Layout";
 import React, {Suspense} from "react";
-import LoadingSpinner from "./components/LoadingSpinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from "react-loader-spinner"
 
 const StartingSite = React.lazy(()=>import("./pages/StartingSite"))
 const RepertuarSite = React.lazy(()=>import("./pages/RepertuarSite"))
+const CinemaHallSite = React.lazy(()=>import("./pages/CinemaHallSite"));
 
 const App = () =>{
+    const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
+
+
     return (
         <div>
             <Layout>
-                <Suspense fallback={<LoadingSpinner/>}>
+                <Suspense fallback={<div style={style}><Loader type="Plane" color="8b0000" secondaryColor="white"/></div>}>
                     <Routes>
                         <Route path="/" element={<StartingSite/>}/>
                         <Route path="/repertuar" element={<RepertuarSite/>}/>
+                        <Route path="/rezerwacja" element={<CinemaHallSite/>}/>
                         <Route path="*" element={<Navigate to="/"/>}/>
                     </Routes>
                 </Suspense>

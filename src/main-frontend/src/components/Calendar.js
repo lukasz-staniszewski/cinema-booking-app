@@ -1,5 +1,5 @@
 import {useState} from "react";
-
+import classes from "./Calendar.module.css";
 const Calendar = (props) => {
 
     const [enteredDate, setEnteredDate] = useState("");
@@ -8,9 +8,8 @@ const Calendar = (props) => {
         props.changeDateFunction(event.target.value);
     }
     return (
-      <form >
-          <label htmlFor={"calendar"}>Date:</label>
-          <input onChange={changeHandler} type="date" id={"calendar"} min={"2021-12-12"} max={"2021-12-31"} value={enteredDate}/>
+      <form align={"center"}>
+          <input className={classes.calendar} onChange={changeHandler} type="date" id={"calendar"} min={"2021-12-12"} max={"2021-12-31"} value={enteredDate}/>
       </form>
     );
 }
