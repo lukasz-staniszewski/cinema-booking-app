@@ -17,6 +17,7 @@ const CinemaHallSite = ()=>{
         let today = new Date();
         let date = today.getFullYear()+'-'+('0' + today.getMonth()+1).slice(-2)+'-'+('0' + today.getDate()).slice(-2);
         let seats_list = [];
+        // eslint-disable-next-line
         choosePlace.map((item)=>{
             let seat_info = item.split(' ');
             seats_list.push(

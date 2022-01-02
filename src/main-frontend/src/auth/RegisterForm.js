@@ -1,6 +1,7 @@
 import {useRef, useState} from "react";
 
 const RegisterForm = (props) =>{
+    // eslint-disable-next-line
     const [isRegistered, setIsRegistered] = useState(false);
     const inputName = useRef();
     const inputSurname = useRef();
