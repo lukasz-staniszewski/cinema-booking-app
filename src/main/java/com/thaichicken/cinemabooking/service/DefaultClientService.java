@@ -48,4 +48,8 @@ public class DefaultClientService implements ClientService {
     public ClientEntity getClientById(Integer id) {
         return clientRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Client not found with id " + id));
     }
+
+    public ClientEntity getClientByEmail(String email) {
+        return clientRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Client not found with email " + email));
+    }
 }
