@@ -5,7 +5,6 @@ import com.thaichicken.cinemabooking.exception.ResourceNotFoundException;
 import com.thaichicken.cinemabooking.model.ShowTimeSeatEntity;
 import com.thaichicken.cinemabooking.model.ShowTimeSeatEntityPK;
 import com.thaichicken.cinemabooking.repository.ShowTimeSeatRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +13,11 @@ import java.util.Optional;
 @Service
 public class DefaultShowTimeSeatService implements ShowTimeSeatService {
 
-    @Autowired
-    private ShowTimeSeatRepository showTimeSeatRepository;
+    private final ShowTimeSeatRepository showTimeSeatRepository;
+
+    public DefaultShowTimeSeatService(ShowTimeSeatRepository showTimeSeatRepository) {
+        this.showTimeSeatRepository = showTimeSeatRepository;
+    }
 
     @Override
     public ShowTimeSeatEntity createShowTimeSeat(ShowTimeSeatEntity showTimeSeat) {
@@ -52,5 +54,9 @@ public class DefaultShowTimeSeatService implements ShowTimeSeatService {
     @Override
     public ShowTimeSeatEntity getShowTimeSeatById(ShowTimeSeatEntityPK id) {
         return showTimeSeatRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Show Time Seat not found with id " + id));
+    }
+
+    public List<ShowTimeSeatEntity> getAllShowTimeSeatsByShowtimeId(Integer showtimeId) {
+        return showTimeSeatRepository.findAllByShowtimeId(showtimeId);
     }
 }

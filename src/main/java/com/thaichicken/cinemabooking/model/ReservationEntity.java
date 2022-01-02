@@ -2,6 +2,7 @@ package com.thaichicken.cinemabooking.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 @Entity
 @Table(name = "reservation", schema = "public", catalog = "pis-db")
@@ -40,7 +41,7 @@ public class ReservationEntity {
         ReservationEntity that = (ReservationEntity) o;
 
         if (reservationId != that.reservationId) return false;
-        return timestamp != null ? timestamp.equals(that.timestamp) : that.timestamp == null;
+        return Objects.equals(timestamp, that.timestamp);
     }
 
     @Override

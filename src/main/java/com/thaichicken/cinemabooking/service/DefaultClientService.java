@@ -3,7 +3,6 @@ package com.thaichicken.cinemabooking.service;
 import com.thaichicken.cinemabooking.exception.ResourceNotFoundException;
 import com.thaichicken.cinemabooking.model.ClientEntity;
 import com.thaichicken.cinemabooking.repository.ClientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @Service
 public class DefaultClientService implements ClientService {
 
-    @Autowired
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
+
+    public DefaultClientService(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
+    }
 
     @Override
     public ClientEntity createClient(ClientEntity client) {
@@ -45,5 +47,9 @@ public class DefaultClientService implements ClientService {
     @Override
     public ClientEntity getClientById(Integer id) {
         return clientRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Client not found with id " + id));
+    }
+
+    public ClientEntity getClientByEmail(String email) {
+        return clientRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("Client not found with email " + email));
     }
 }

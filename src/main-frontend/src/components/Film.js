@@ -1,4 +1,5 @@
 import classes from "./Film.module.css";
+import {Link} from "react-router-dom";
 
 const Film = (props) => {
     const convertHour = (hour) =>{
@@ -7,20 +8,18 @@ const Film = (props) => {
     }
 
     return (
-        <li key={props.show.movieId} className={classes[`card-content`]}>
-                <div className={classes.information}>
-                    <h2>{props.show.name}</h2>
-                </div>
-                <p className={classes.position}>{props.show.director}</p>
-                <div className={classes.about}>
-                    <p>Production year: {props.show.productionYear}</p>
-                    <p>Length: {props.show.length} minutes</p>
-                    <p>Playing hours:</p>
-                    <div>
-                        {
-                            props.show.hour.map((item)=> <p>{convertHour(item)}</p>)}
-                    </div>
-                </div>
+        <li key={props.show.movieId} className={classes.card}>
+            <h2>{props.show.name}</h2>
+            <h3>{props.show.director}</h3>
+            <ul className={classes.info}>
+               {props.show.type && <li>{props.show.type}</li>}
+                {props.show.productionYear && <li>{props.show.productionYear}</li>}
+                {props.show.length && <li>{props.show.length} min.</li>}
+            </ul>
+            {props.show.description && <p>{props.show.description}</p>}
+            <ul className={classes.hours}>
+                    {props.show.showtimeInfo.map(item=><Link to="/rezerwacja" state={{showtimeInfo: item,}}>{convertHour(item.hour)}</Link>)}
+            </ul>
         </li>
     );
 };

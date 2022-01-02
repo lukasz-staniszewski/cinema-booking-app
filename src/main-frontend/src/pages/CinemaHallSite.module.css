@@ -1,0 +1,70 @@
+.hall {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    min-height: 100vh;
+}
+
+.hall>button{
+    margin-top: 10px;
+    color: white;
+    background-color: var(--dark-red);
+    font-family: 'Roboto', sans-serif;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.hall>button.locked{
+    color: lightgray;
+    background-color: darkgray;
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    column-gap: 3px;
+    margin: 10px;
+}
+
+.row button {
+    background-color: transparent;
+    color: grey;
+    text-align: center;
+    aspect-ratio: 1/1;
+    border: none;
+    border-radius: 5px;
+    z-index: 3;
+    font-size: 17px;
+}
+
+.screen{
+    margin-top: 20px;
+    color: gray;
+    text-align: center;
+    text-transform: uppercase;
+
+}
+
+
+.screen div{
+    height: 10px;
+    width: 100%;
+    /*max-width: ;*/
+    background-color: grey;
+}
+
+.row button i {
+    z-index: 2;
+}
+
+.row button.active {
+    color: lawngreen;
+}
+
+.row button.occupied {
+    color: red;
+}
