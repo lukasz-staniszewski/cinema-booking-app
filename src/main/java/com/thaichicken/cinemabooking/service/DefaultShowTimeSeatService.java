@@ -55,4 +55,8 @@ public class DefaultShowTimeSeatService implements ShowTimeSeatService {
     public ShowTimeSeatEntity getShowTimeSeatById(ShowTimeSeatEntityPK id) {
         return showTimeSeatRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Show Time Seat not found with id " + id));
     }
+
+    public List<ShowTimeSeatEntity> getAllShowTimeSeatsByShowtimeId(Integer showtimeId) {
+        return showTimeSeatRepository.findAllByShowtimeId(showtimeId);
+    }
 }

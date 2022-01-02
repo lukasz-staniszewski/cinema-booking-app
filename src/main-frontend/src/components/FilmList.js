@@ -7,7 +7,6 @@ import classes from "./FilmList.module.css";
 const FilmList = (props) => {
     let listShows = props.films;
 
-
     return (
         <Fragment>
             <ul className={classes[`offerts-list`]}>

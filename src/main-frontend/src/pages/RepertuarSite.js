@@ -1,10 +1,11 @@
 import Calendar from "../components/Calendar";
 import FilmList from "../components/FilmList";
 import {useCallback, useEffect, useState} from "react";
+import classes from "./RepertuarSite.module.css";
 
 const RepertuarSite = () =>{
     const[data, setData] = useState([]);
-    const[date, setDate] = useState("2021-12-12");
+    const[date, setDate] = useState("2021-12-13");
 
     const setDateHandler = (newDate) => {
         setDate(newDate);
@@ -69,8 +70,8 @@ const RepertuarSite = () =>{
         }, [fetchFilmHandler])
 
         return (
-            <div className="App">
-                <Calendar changeDateFunction={setDateHandler}/>
+            <div className={classes['repertuar-container']}>
+                <Calendar className={classes.calendar} changeDateFunction={setDateHandler}/>
                 <FilmList films={data}/>
             </div>
         );
