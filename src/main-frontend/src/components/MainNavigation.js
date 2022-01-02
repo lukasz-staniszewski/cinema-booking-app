@@ -17,8 +17,10 @@ const MainNavigation = () =>{
     const hideModalHandler = ()=>{
         setModalIsShown(false);
     }
-
-    console.log(authCtx.isUserLogged)
+    console.log(authCtx.token);
+    console.log(authCtx.isUserLogged);
+    const tokenData = localStorage.getItem('token');
+    console.log(tokenData);
 
     return(
         <Fragment>

@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/registration").permitAll();
         //http.authorizeRequests().antMatchers("/movies").hasAuthority("USER");
         http.authorizeRequests().antMatchers("/cinema_halls").hasAuthority("USER");
-        http.authorizeRequests().antMatchers("/*").permitAll();
+        http.authorizeRequests().antMatchers("/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfig, secretKey));
         http.addFilterBefore(new JwtTokenVerifier(secretKey, jwtConfig),  JwtUsernameAndPasswordAuthenticationFilter.class);
