@@ -1,4 +1,4 @@
-import {useRef, useState} from "react";
+import {Fragment, useRef, useState} from "react";
 
 const RegisterForm = (props) =>{
     // eslint-disable-next-line
@@ -10,6 +10,7 @@ const RegisterForm = (props) =>{
     const inputPassword2 = useRef();
     const inputPhone = useRef();
     const [isPasswdError, setIsPasswdError] = useState(false);
+    const [isRegisterError, setIsRegisterError] = useState(false);
 
     const submitFormHandler = (event) =>{
         event.preventDefault();         // button has default actions which we dont like
@@ -19,6 +20,7 @@ const RegisterForm = (props) =>{
         const enteredPassword = inputPassword.current.value;
         const enteredPassword2 = inputPassword2.current.value;
         const enteredPhone = inputPhone.current.value;
+
 
         if (enteredPassword!==enteredPassword2){
             setIsPasswdError(true);
@@ -42,65 +44,56 @@ const RegisterForm = (props) =>{
         };
         fetch('registration', requestOptions).then((response)=>{
             if (!response.ok){
-                console.log("Registration not gucci");
+                setIsRegisterError(true);
+                setIsRegistered(false);
             }
             else{
-                console.log("Registration gucci, check mail plx!")
-                console.log("Token: ", response.text())
+                setIsRegisterError(false);
                 setIsRegistered(true);
             }
         });
 
-        setIsRegistered(true);
-
-        // TODO: fetch will work but need some repair
     }
 
 
     // const RegForm = () =>{
         return(
-            <form className={props.styles.form} onSubmit={submitFormHandler}>
-                <div>
-                    <label htmlFor="name">Imię</label>
-                    <input id="name" required ref={inputName}/>
-                </div>
-                <div>
-                    <label htmlFor="surname">Nazwisko</label>
-                    <input id="surname" required ref={inputSurname}/>
-                </div>
-                <div>
-                    <label htmlFor="email">Adres e-mail</label>
-                    <input type="email" id="email" required ref={inputEmail}/>
-                </div>
-                <div>
-                    <label htmlFor="password">Hasło</label>
-                    <input type="password" id="password" required ref={inputPassword} className={isPasswdError ? props.styles.error : ""}/>
-                </div>
-                <div>
-                    <label htmlFor="password2">Powtórz hasło</label>
-                    <input type="password" id="password2" required ref={inputPassword2} className={isPasswdError ? props.styles.error : ""}/>
-                </div>
-                <div>
-                    <label htmlFor="phone">Numer telefonu</label>
-                    <input type="tel" id="phone" pattern = "[0-9]{9}" required ref={inputPhone}/>
-                </div>
-                <button>
-                    Zarejestruj
-                </button>
-            </form>
-        )
-    // }
-/*
-    return(
-        <Fragment>
-        {isRegistered ?
+            <Fragment>
+                {isRegisterError && <p className={props.styles.registerError}>Wystąpił błąd w trakcie rejestracji, spróbuj ponownie później!</p>}
+                {isRegistered && <p className={props.styles.checkMailInfo}>Udało się dokonać rejestracji. Sprawdź swoją skrzynkę pocztową!</p>}
+                <form className={props.styles.form} onSubmit={submitFormHandler}>
                     <div>
-                        <h3>Sukces!</h3>
-                        <p>Sprawdź swoją skrzynkę pocztową!</p>
+                        <label htmlFor="name">Imię</label>
+                        <input id="name" required ref={inputName}/>
                     </div>
-            : <RegForm/>}
-        </Fragment>
-    )*/
+                    <div>
+                        <label htmlFor="surname">Nazwisko</label>
+                        <input id="surname" required ref={inputSurname}/>
+                    </div>
+                    <div>
+                        <label htmlFor="email">Adres e-mail</label>
+                        <input type="email" id="email" required ref={inputEmail}/>
+                    </div>
+                    <div>
+                        <label htmlFor="password">Hasło</label>
+                        <input type="password" id="password" required ref={inputPassword} className={isPasswdError ? props.styles.error : ""}/>
+                        {isPasswdError && <p className={props.styles.textError}>Wprowadzone hasła muszą się zgadzać!</p>}
+                    </div>
+                    <div>
+                        <label htmlFor="password2">Powtórz hasło</label>
+                        <input type="password" id="password2" required ref={inputPassword2} className={isPasswdError ? props.styles.error : ""}/>
+                        {isPasswdError && <p className={props.styles.textError}>Wprowadzone hasła muszą się zgadzać!</p>}
+                    </div>
+                    <div>
+                        <label htmlFor="phone">Numer telefonu</label>
+                        <input type="tel" id="phone" pattern = "[0-9]{9}" required ref={inputPhone}/>
+                    </div>
+                    <button>
+                        Zarejestruj
+                    </button>
+                </form>
+            </Fragment>
+        )
 }
 
 export default RegisterForm;

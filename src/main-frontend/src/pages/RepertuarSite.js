@@ -2,10 +2,13 @@ import Calendar from "../components/Calendar";
 import FilmList from "../components/FilmList";
 import {useCallback, useEffect, useState} from "react";
 import classes from "./RepertuarSite.module.css";
+import NoFilmInfo from "../components/NoFilmInfo";
 
 const RepertuarSite = () =>{
     const[data, setData] = useState([]);
-    const[date, setDate] = useState("2021-12-13");
+    let today = new Date();
+    let todays_date = today.getFullYear()+'-'+('0' + today.getMonth()+1).slice(-2)+'-'+('0' + today.getDate()).slice(-2);
+    const[date, setDate] = useState(todays_date);
 
     const setDateHandler = (newDate) => {
         setDate(newDate);
@@ -72,7 +75,7 @@ const RepertuarSite = () =>{
         return (
             <div className={classes['repertuar-container']}>
                 <Calendar className={classes.calendar} changeDateFunction={setDateHandler}/>
-                <FilmList films={data}/>
+                {data.length > 0 ? <FilmList films={data}/> : <NoFilmInfo/>}
             </div>
         );
 };

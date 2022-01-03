@@ -3,6 +3,8 @@ import styles from "./CinemaHallSite.module.css";
 import {useLocation} from "react-router-dom";
 import AuthContext from "../components/store/auth-context";
 import jwt_decode from "jwt-decode";
+import {Fragment} from "react";
+import ReservationInfoScreen from "../components/ReservationInfoScreen";
 
 const CinemaHallSite = ()=>{
     const [rows, setRows] = useState();
@@ -12,6 +14,8 @@ const CinemaHallSite = ()=>{
     const location = useLocation();
     const {showtimeInfo} = location.state;
     const authCtx = useContext(AuthContext);
+    const [modalIsShown, setModalIsShown] = useState(false);
+    const [isErrorReservation, setIsErrorReservation] = useState(false);
 
     const performReservation = () =>{
         let today = new Date();
@@ -43,11 +47,12 @@ const CinemaHallSite = ()=>{
                 body: JSON.stringify(fetch_json)
             };
             fetch(' /reservations/reservation', requestOptions).then((response)=>{
+                setModalIsShown(true);
                 if (!response.ok){
-                    console.log("Reservation not gucci!");
+                    setIsErrorReservation(true);
                 }
                 else {
-                    console.log("Reservation gucci!")
+                    setIsErrorReservation(false);
                 }
             });
         }
@@ -144,36 +149,42 @@ const CinemaHallSite = ()=>{
         fetchReservations();
     },[fetchFullHall, fetchReservations])
 
+    const hideModalHandler = ()=>{
+        setModalIsShown(false);
+    }
+
     return (
-        <div className={styles.hall}>
-            <div>
-                {[...Array(rows).keys()].map((row) => (
-                    <div className={styles.row} key={`${row}`}>
-                        {[...Array(columns).keys()].map((column) => (
-                            <button
-                                className={
-                                    chairColor(rows-(row), column+1)
-                                }
-                                onClick={choosePlaceHandler}
-                                key={`${rows-(row)} ${column+1}`}
-                                id={`${rows-(row)} ${column+1}`}
-                                disabled={reservatedSeats.includes(`${rows-(row)} ${column+1}`) ? true :false}
-                            >
-                                <i id={`${rows-(row)} ${column+1}`} className="fas fa-couch"/>
-                            </button>
-                        ))}
+        <Fragment>
+            {modalIsShown && <ReservationInfoScreen onClose={hideModalHandler} isError={isErrorReservation}/>}
+            <div className={styles.hall}>
+                <div>
+                    {[...Array(rows).keys()].map((row) => (
+                        <div className={styles.row} key={`${row}`}>
+                            {[...Array(columns).keys()].map((column) => (
+                                <button
+                                    className={
+                                        chairColor(rows-(row), column+1)
+                                    }
+                                    onClick={choosePlaceHandler}
+                                    key={`${rows-(row)} ${column+1}`}
+                                    id={`${rows-(row)} ${column+1}`}
+                                    disabled={reservatedSeats.includes(`${rows-(row)} ${column+1}`) ? true :false}
+                                >
+                                    <i id={`${rows-(row)} ${column+1}`} className="fas fa-couch"/>
+                                </button>
+                            ))}
+                        </div>
+                    ))}
+                    <div className={styles.screen}>
+                        <p>ekran</p>
+                        <div></div>
                     </div>
-                ))}
-                <div className={styles.screen}>
-                    <p>ekran</p>
-                    <div></div>
                 </div>
+                <button className={checkCanReservate() ? '' : styles['locked']} onClick={performReservation} disabled={!checkCanReservate()}>
+                    Zarezerwuj
+                </button>
             </div>
-            <button className={checkCanReservate() ? '' : styles['locked']} onClick={performReservation} disabled={!checkCanReservate()}>
-                Zarezerwuj
-            </button>
-        </div>
-    );
+        </Fragment>);
 }
 
 export default CinemaHallSite;

@@ -67,3 +67,27 @@ section>button {
     color: var(--dark-red);
     font-weight: bold;
 }
+
+.textError{
+    font-size: 12px;
+    margin-top: 3px;
+    color: var(--dark-red);
+    font-weight: bold;
+    text-align: center;
+}
+
+.registerError {
+    color: red;
+    font-size: 14px;
+    width: 75%;
+    margin: 10px auto;
+    font-weight: bold;
+}
+
+.checkMailInfo {
+    color: green;
+    font-weight: bold;
+    font-size: 14px;
+    width: 75%;
+    margin: 10px auto;
+}
