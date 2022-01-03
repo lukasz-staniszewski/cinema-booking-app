@@ -1,0 +1,12 @@
+p{
+    color: white;
+}
+.wrapper{
+    margin: 55px auto 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 42px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    width: 60vw;
+}

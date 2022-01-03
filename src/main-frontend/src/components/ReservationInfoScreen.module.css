@@ -1,0 +1,15 @@
+.wrapper{
+    padding: 25px;
+    text-align: center;
+    max-width: 35vw;
+    font-family: 'Roboto', sans-serif;
+}
+
+.wrapper h2{
+    text-transform: uppercase;
+}
+
+.wrapper p{
+    margin-top: 15px;
+    color: black;
+}
