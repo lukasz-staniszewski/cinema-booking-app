@@ -2,10 +2,10 @@
     color: white;
     background-color: var(--dark-red);
     font-family: 'Roboto', sans-serif;
-    padding: 15px 20px;
+    padding: 10px 3px;
     border-radius: 10px;
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 10px;
 }
 
 .reservationbtn.locked{
@@ -19,21 +19,22 @@
     flex-direction: row;
     justify-content: center;
     text-align: center;
-    font-size: 18px;
+    font-size: 9px;
 }
 
 .underscreen{
     border-top: 2px solid darkgrey;
-    padding-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 .legend>div{
-    margin-right: 20px;
+    margin-right: 6px;
     color: white;
 }
 
@@ -47,4 +48,69 @@
 
 .legend>div:nth-child(3)>i{
     color: lawngreen;
+}
+
+@media (min-width: 360px) and (orientation: portrait) {
+    .reservationbtn{
+        padding: 10px 6px;
+        font-size: 15px;
+    }
+    .legend{
+        font-size: 11px;
+    }
+
+    .legend>div {
+        margin-right: 8px;
+    }
+}
+
+@media (min-width: 540px) and (orientation: portrait) {
+    .reservationbtn{
+        padding: 10px 7px;
+        font-size: 18px;
+    }
+    .legend{
+        font-size: 13px;
+    }
+
+    .legend>div {
+        margin-right: 12px;
+    }
+}
+@media (min-width: 760px) and (orientation: portrait) {
+    .reservationbtn{
+        padding: 10px 10px;
+        font-size: 27px;
+    }
+    .legend{
+        font-size: 20px;
+    }
+
+    .legend>div {
+        margin-right: 18px;
+    }
+
+    .underscreen{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+@media (min-width: 1000px) and (orientation: portrait) {
+    .reservationbtn{
+        padding: 15px 15px;
+        font-size: 35px;
+    }
+    .legend{
+        font-size: 25px;
+    }
+
+    .legend>div {
+        margin-right: 22px;
+    }
+
+    .underscreen{
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
 }

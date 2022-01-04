@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: center;
     column-gap: 3px;
-    margin: 10px;
+    margin: 4px;
 }
 
 .row>button {
@@ -14,12 +14,12 @@
     border: none;
     border-radius: 5px;
     z-index: 4;
-    font-size: 24px;
+    font-size: 8px;
     position: relative;
 }
 
 .row>button>span{
-    font-size: 10px;
+    font-size: 5px;
     color: grey;
     font-weight: bold;
     z-index: 3;
@@ -38,7 +38,7 @@
 }
 
 .screen div{
-    height: 10px;
+    height: 6px;
     width: 85%;
     margin: 0 auto;
     background-color: grey;
@@ -66,6 +66,7 @@
 }
 
 .linewrapper{
+    font-size: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -73,8 +74,86 @@
 }
 
 .line{
-    margin: 0 5px;
+    margin: 0 2px;
     background-color: darkgrey;
     height: 3px;
-    width: 50px;
+    width: 8px;
+}
+
+
+@media (min-width: 360px) and (orientation: portrait){
+    .linewrapper{
+        font-size: 11px;
+    }
+    .row>button {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 540px) and (orientation: portrait) {
+    .linewrapper {
+        font-size: 15px;
+    }
+
+    .row > button {
+        font-size: 15px;
+    }
+
+    .line {
+        margin: 0 4px;
+        width: 14px;
+    }
+
+    .row > button > span {
+        font-size: 7px;
+    }
+}
+@media (min-width: 760px) and (orientation: portrait) {
+    .linewrapper {
+        font-size: 17px;
+    }
+
+    .row > button {
+        font-size: 23px;
+    }
+
+    .line {
+        margin: 0 6px;
+        width: 32px;
+    }
+
+    .row > button > span {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1000px) and (orientation: portrait) {
+    .linewrapper {
+        font-size: 28px;
+    }
+
+    .row > button {
+        font-size: 34px;
+    }
+
+    .line {
+        margin: 0 10px;
+        width: 45px;
+    }
+
+    .row > button > span {
+        font-size: 15px;
+    }
+
+    .screen{
+        margin-top: 55px;
+        font-size: 30px;
+    }
+
+    .screen div{
+        height: 9px;
+        width: 85%;
+        margin: 0 auto;
+        background-color: grey;
+    }
 }

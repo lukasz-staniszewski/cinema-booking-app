@@ -2,7 +2,7 @@
   position: relative;
   background-image: url("../img/ticket-background.jpg");
   width: 100vw;
-  height: calc(100vh - 35px);
+  min-height: calc(100vh - 59px);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -46,8 +46,35 @@ h1{
 
 }
 
+@media (min-width: 360px) and (orientation: portrait){
+  .mainDiv{
+    min-height: calc(100vh - 65px);
+  }
+}
 
-@media (min-width: 1000px){
-  h1 {font-size: 60px}
-  .btn {font-size: 35px}
+@media (min-width: 760px) and (orientation: portrait){
+  .mainDiv{
+    min-height: calc(100vh - 80px);
+  }
+  h1{
+    font-size: 60px;
+  }
+  .btn{
+    font-size: 35px;
+  }
+
+}
+
+@media (min-width: 1000px) and (orientation: portrait){
+  .mainDiv{
+    min-height: calc(100vh - 100px);
+  }
+  h1{
+    font-size: 80px;
+  }
+  .btn{
+    font-size: 45px;
+    padding: 23px;
+  }
+
 }

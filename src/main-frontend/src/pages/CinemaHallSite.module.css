@@ -1,6 +1,6 @@
 .hall {
-    padding-top: 35px;
-    padding-bottom: 35px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -10,14 +10,14 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-color: rgba(0,0,0,0.5);
-    min-height: 100vh;
+    min-height: calc(100vh - 59px);
 }
 
 .centerwrapper>div{
     background-color: rgba(0,0,0,0.8);;
     border: 3px solid darkgrey;
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .loaderwrapper{
@@ -30,4 +30,21 @@
     background-size: cover;
     background-color: rgba(0,0,0,0.8);
     z-index: 5;
+}
+
+@media (min-width: 360px) and (orientation: portrait) {
+    .hall{
+        min-height: calc(100vh - 65px);
+    }
+}
+
+@media (min-width: 760px) and (orientation: portrait){
+    .hall {
+        min-height: calc(100vh - 80px);
+    }
+}
+@media (orientation: portrait) and (min-width: 1000px){
+    .hall{
+        min-height: calc(100vh - 100px);
+    }
 }

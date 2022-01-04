@@ -2,11 +2,24 @@
     margin-top: 40px;
     padding: 10px;
     background-color: rgba(255,255,255,0.8);
-    border: 3px solid black;
+    border: 2px solid black;
     border-radius: 10px;
     color: black;
     filter: invert(1);
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
+}
+@media (min-width: 760px) and (orientation: portrait) {
+    .calendar{
+        padding: 15px;
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 1000px) and (orientation: portrait) {
+    .calendar{
+        padding: 24px;
+        font-size: 35px;
+    }
 }

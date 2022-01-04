@@ -6,10 +6,10 @@ div.showtimeinfo {
 
 .showtimeinfo>div:nth-child(1){
     display: flex;
-    font-size: 20px;
+    font-size: 10px;
     flex-direction: row;
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 8px 0;
     border-bottom: 2px solid darkgrey;
     align-items: center;
     text-transform: uppercase;
@@ -24,6 +24,15 @@ div.showtimeinfo {
     margin-left: 10px;
 }
 
+.showtimeinfo h2{
+    font-size: 8px;
+}
+
+.showtimeinfo h5{
+    font-size: 7px;
+    font-style: italic;
+}
+
 .filminfo {
     color: darkgray;
     justify-content: center;
@@ -33,6 +42,7 @@ div.showtimeinfo {
 
 .filminfo li{
     padding: 5px;
+    font-size: 10px;
 }
 
 .filminfo li:not(:last-child) {
@@ -58,4 +68,84 @@ div.showtimeinfo {
 .space{
     height: 100%;
     border-right: 2px solid darkgrey;
+}
+
+@media (min-width: 360px) and (orientation: portrait){
+    .showtimeinfo>div:nth-child(1){
+        font-size: 13px;
+    }
+
+    .showtimeinfo h2{
+        font-size: 13px;
+    }
+
+    .showtimeinfo h5{
+        margin-top: 5px;
+        font-size: 10px;
+    }
+
+    .filminfo li{
+        padding: 8px 5px;
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 540px) and (orientation: portrait){
+    .showtimeinfo>div:nth-child(1){
+        font-size: 15px;
+    }
+
+    .showtimeinfo h2{
+        font-size: 16px;
+    }
+
+    .showtimeinfo h5{
+        margin-top: 5px;
+        font-size: 13px;
+    }
+
+    .filminfo li{
+        padding: 9px 5px;
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 760px) and (orientation: portrait){
+    .showtimeinfo>div:nth-child(1){
+        font-size: 20px;
+    }
+
+    .showtimeinfo h2{
+        font-size: 25px;
+    }
+
+    .showtimeinfo h5{
+        margin-top: 7px;
+        font-size: 17px;
+    }
+
+    .filminfo li{
+        padding: 9px 5px;
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1000px) and (orientation: portrait){
+    .showtimeinfo>div:nth-child(1){
+        font-size: 31px;
+    }
+
+    .showtimeinfo h2{
+        font-size: 35px;
+    }
+
+    .showtimeinfo h5{
+        margin-top: 12px;
+        font-size: 24px;
+    }
+
+    .filminfo li{
+        padding: 9px 5px;
+        font-size: 25px;
+    }
 }

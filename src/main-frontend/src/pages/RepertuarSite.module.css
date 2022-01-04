@@ -1,8 +1,7 @@
 .repertuar-container{
     background: rgb(45,0,0);
     background: radial-gradient(circle, rgba(45,0,0,1) 0%, rgba(82,0,0,1) 50%, rgba(134,0,0,1) 100%);
-    min-height: 100vh;
-    /*z-index: 0;*/
+    min-height: calc(100vh - 59px);
     position: relative;
     left: 0;
     right: 0;
@@ -12,3 +11,21 @@
 .calendar{
     margin: 0 auto;
 }
+
+@media (min-width: 360px) and (orientation: portrait){
+    .repertuar-container {
+        min-height: calc(100vh - 65px);
+    }
+}
+
+@media (min-width: 760px) and (orientation: portrait){
+    .repertuar-container {
+        min-height: calc(100vh - 80px);
+    }
+}
+@media (min-width: 1000px) and (orientation: portrait){
+    .repertuar-container {
+        min-height: calc(100vh - 100px);
+    }
+}
+
