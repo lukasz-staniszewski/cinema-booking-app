@@ -1,22 +1,3 @@
-div.reservationareawrapper{
-    padding: 40px;
-}
-
-.reservationbtn{
-    color: white;
-    background-color: var(--dark-red);
-    font-family: 'Roboto', sans-serif;
-    padding: 15px 20px;
-    border-radius: 10px;
-    text-transform: uppercase;
-    font-size: 24px;
-}
-
-.reservationbtn.locked{
-    color: lightgray;
-    background-color: darkgray;
-}
-
 .row {
     display: flex;
     flex-direction: row;
@@ -82,42 +63,6 @@ div.reservationareawrapper{
 
 .row button span.active{
     color: black;
-}
-
-.legend{
-    text-transform: uppercase;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    font-size: 18px;
-}
-
-.underscreen{
-    border-top: 2px solid darkgrey;
-    padding-top: 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 60px;
-}
-
-.legend>div{
-    margin-right: 20px;
-    color: white;
-}
-
-.legend>div:nth-child(1)>i{
-    color:darkgrey;
-}
-
-.legend>div:nth-child(2)>i{
-    color: var(--dark-red);
-}
-
-.legend>div:nth-child(3)>i{
-    color: lawngreen;
 }
 
 .linewrapper{
