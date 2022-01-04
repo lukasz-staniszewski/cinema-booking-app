@@ -13,202 +13,21 @@
     min-height: 100vh;
 }
 
-.hall>div.centerwrapper>div{
+.centerwrapper>div{
     background-color: rgba(0,0,0,0.8);;
     border: 3px solid darkgrey;
     padding: 30px;
     border-radius: 20px;
 }
 
-.hall .reservationbtn{
-    color: white;
-    background-color: var(--dark-red);
-    font-family: 'Roboto', sans-serif;
-    padding: 10px 15px;
-    border-radius: 10px;
-    text-transform: uppercase;
-    font-size: 24px;
-}
-
-.hall .reservationbtn.locked{
-    color: lightgray;
-    background-color: darkgray;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    column-gap: 3px;
-    margin: 10px;
-}
-
-.row button {
-    background-color: transparent;
-    color: grey;
-    text-align: center;
-    aspect-ratio: 1/1;
-    border: none;
-    border-radius: 5px;
-    z-index: 4;
-    font-size: 24px;
-    position: relative;
-}
-
-.row button span{
-    font-size: 10px;
-    color: grey;
-    font-weight: bold;
-    z-index: 3;
+.loaderwrapper{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -90%);
-}
-
-.screen{
-    margin-top: 20px;
-    color: gray;
-    text-align: center;
-    text-transform: uppercase;
-
-}
-
-.screen div{
-    height: 10px;
-    width: 85%;
-    margin: 0 auto;
-    background-color: grey;
-}
-
-.row button i {
-    z-index: 2;
-}
-
-.row button.active {
-    color: lawngreen;
-}
-
-.row button.occupied {
-    color: red;
-}
-
-
-.row button span.occupied{
-    color: red;
-}
-
-.row button span.active{
-    color: black;
-}
-
-.legend{
-    text-transform: uppercase;
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    text-align: center;
-}
-
-.underscreen{
-    border-top: 2px solid darkgrey;
-    padding-top: 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     align-items: center;
-    margin-top: 60px;
-}
-
-.legend>div{
-    margin-right: 20px;
-    color: white;
-}
-
-.legend>div:nth-child(1)>i{
-    color:darkgrey;
-}
-
-.legend>div:nth-child(2)>i{
-    color: var(--dark-red);
-}
-
-.legend>div:nth-child(3)>i{
-    color: lawngreen;
-}
-
-.hall>div.centerwrapper>div.showtimeinfo{
-    color: white;
-    padding: 15px 30px;
-    margin-bottom: 25px;
-}
-
-.hall>div.centerwrapper>div.showtimeinfo>div:nth-child(1){
-    display: flex;
-    font-size: 20px;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 2px solid darkgrey;
-    align-items: center;
-    text-transform: uppercase;
-}
-
-.hall>div.centerwrapper>div.showtimeinfo>div:nth-child(1)>div{
-    display: flex;
-    flex-direction: row;
-}
-
-.hall>div.centerwrapper>div.showtimeinfo>div>div>p{
-    margin-left: 10px;
-}
-
-.filminfo {
-    color: darkgray;
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
-}
-
-.filminfo li{
-    padding: 5px;
-}
-
-.filminfo li:not(:last-child) {
-    border-right: 2px solid darkgray;
-}
-
-.hall>div.centerwrapper>div.showtimeinfo>div:nth-child(2) {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hall>div.centerwrapper>div.showtimeinfo>div:nth-child(2)>div:nth-child(1) {
-    padding: 10px 20px 10px 0;
-}
-
-.hall>div.centerwrapper>div.showtimeinfo>div:nth-child(2)>div:nth-child(3) {
-    padding: 10px 0 10px 20px;
-}
-
-.space{
+    width: 100%;
     height: 100%;
-    border-right: 2px solid darkgrey;
-}
-
-.linewrapper{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: darkgrey;
-}
-
-.line{
-    margin: 0 5px;
-    background-color: darkgrey;
-    height: 3px;
-    width: 50px;
+    background-size: cover;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 5;
 }

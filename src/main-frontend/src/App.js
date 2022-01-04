@@ -1,5 +1,5 @@
 import {Routes, Route, Navigate} from "react-router-dom";
-import Layout from "./components/Layout";
+import Layout from "./components/layout/Layout";
 import React, {Suspense} from "react";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from "react-loader-spinner"

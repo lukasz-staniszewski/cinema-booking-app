@@ -1,4 +1,4 @@
-import Modal from "./Modal";
+import Modal from "../layout/Modal";
 import styles from "./ReservationInfoScreen.module.css"
 
 const ReservationInfoScreen = (props) => {

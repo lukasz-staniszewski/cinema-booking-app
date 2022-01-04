@@ -1,8 +1,8 @@
-import Calendar from "../components/Calendar";
-import FilmList from "../components/FilmList";
+import Calendar from "../components/repertuarsite/Calendar";
+import FilmList from "../components/repertuarsite/FilmList";
 import {useCallback, useEffect, useState} from "react";
 import classes from "./RepertuarSite.module.css";
-import NoFilmInfo from "../components/NoFilmInfo";
+import NoFilmInfo from "../components/repertuarsite/NoFilmInfo";
 
 const RepertuarSite = () =>{
     const[data, setData] = useState([]);

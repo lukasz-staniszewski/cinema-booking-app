@@ -3,8 +3,8 @@ import {Fragment, useState, useContext} from "react";
 
 import styles from "./MainNavigation.module.css"
 
-import AuthScreen from "./AuthScreen";
-import AuthContext from "../components/store/auth-context.js";
+import AuthScreen from "../../auth/AuthScreen";
+import AuthContext from "../store/auth-context.js";
 
 const MainNavigation = () =>{
     const [modalIsShown, setModalIsShown] = useState(false);
