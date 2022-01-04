@@ -55,8 +55,6 @@ const RegisterForm = (props) =>{
 
     }
 
-
-    // const RegForm = () =>{
         return(
             <Fragment>
                 {isRegisterError && <p className={props.styles.registerError}>Wystąpił błąd w trakcie rejestracji, spróbuj ponownie później!</p>}

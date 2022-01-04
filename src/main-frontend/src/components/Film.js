@@ -18,7 +18,7 @@ const Film = (props) => {
             </ul>
             {props.show.description && <p>{props.show.description}</p>}
             <ul className={classes.hours}>
-                    {props.show.showtimeInfo.map(item=><Link to="/rezerwacja" state={{showtimeInfo: item,}}>{convertHour(item.hour)}</Link>)}
+                    {props.show.showtimeInfo.map(item=><Link to="/rezerwacja" state={{showtimeInfo: item, filmInfo: props.show,}} >{convertHour(item.hour)}</Link>)}
             </ul>
         </li>
     );

@@ -12,7 +12,7 @@ const CinemaHallSite = ()=>{
     const [reservatedSeats, setReservatedSeats] = useState([]);
     const [choosePlace, setChoosePlace] = useState([]);
     const location = useLocation();
-    const {showtimeInfo} = location.state;
+    const {showtimeInfo, filmInfo} = location.state;
     const authCtx = useContext(AuthContext);
     const [modalIsShown, setModalIsShown] = useState(false);
     const [isErrorReservation, setIsErrorReservation] = useState(false);
@@ -152,37 +152,79 @@ const CinemaHallSite = ()=>{
     const hideModalHandler = ()=>{
         setModalIsShown(false);
     }
-
     return (
         <Fragment>
             {modalIsShown && <ReservationInfoScreen onClose={hideModalHandler} isError={isErrorReservation}/>}
             <div className={styles.hall}>
-                <div>
-                    {[...Array(rows).keys()].map((row) => (
-                        <div className={styles.row} key={`${row}`}>
-                            {[...Array(columns).keys()].map((column) => (
-                                <button
-                                    className={
-                                        chairColor(rows-(row), column+1)
-                                    }
-                                    onClick={choosePlaceHandler}
-                                    key={`${rows-(row)} ${column+1}`}
-                                    id={`${rows-(row)} ${column+1}`}
-                                    disabled={reservatedSeats.includes(`${rows-(row)} ${column+1}`) ? true :false}
-                                >
-                                    <i id={`${rows-(row)} ${column+1}`} className="fas fa-couch"/>
-                                </button>
+                <div className={styles.divswrapper}>
+                    <div className={styles.showtimeinfo}>
+                        <div>
+                            <div>
+                                <i className="fas fa-map-marked-alt"></i>
+                                <p>Sala {showtimeInfo.cinemaHallNumber}</p>
+                            </div>
+                            <div>
+                                <p>{filmInfo.date},</p>
+                                <p>godz. {showtimeInfo.hour}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h2>{filmInfo.name}</h2>
+                                <h5>{filmInfo.director}</h5>
+                            </div>
+                            <div>
+                                <ul className={styles.filminfo}>
+                                    {filmInfo.type && <li>{filmInfo.type}</li>}
+                                    {filmInfo.productionYear && <li>{filmInfo.productionYear}</li>}
+                                    {filmInfo.length && <li>{filmInfo.length} min.</li>}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            {[...Array(rows).keys()].map((row) => (
+                                <div className={styles.row} key={`${row}`}>
+                                    {[...Array(columns).keys()].map((column) => (
+                                        <button
+                                            className={chairColor(rows-(row), column+1)}
+                                            onClick={choosePlaceHandler}
+                                            key={`${rows-(row)} ${column+1}`}
+                                            id={`${rows-(row)} ${column+1}`}
+                                            disabled={reservatedSeats.includes(`${rows-(row)} ${column+1}`) ? true :false}
+                                        >
+                                            <i id={`${rows-(row)} ${column+1}`} className="fas fa-couch"/>
+                                        </button>
+                                    ))}
+                                </div>
                             ))}
                         </div>
-                    ))}
-                    <div className={styles.screen}>
-                        <p>ekran</p>
-                        <div></div>
+                        <div className={styles.screen}>
+                            <p>ekran</p>
+                            <div></div>
+                        </div>
+                        <div className={styles.underscreen}>
+                            <div className={styles.legend}>
+                                <div>
+                                    <i className="fas fa-couch"></i>
+                                    <p>wolne</p>
+                                </div>
+                                <div>
+                                    <i className="fas fa-couch"></i>
+                                    <p>zajęte</p>
+                                </div>
+                                <div>
+                                    <i className="fas fa-couch"></i>
+                                    <p>wybrane</p>
+                                </div>
+                            </div>
+                            <button className={`${checkCanReservate() ? '' : styles['locked']} ${styles.reservationbtn}`} onClick={performReservation} disabled={!checkCanReservate()}>
+                                Zarezerwuj
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <button className={checkCanReservate() ? '' : styles['locked']} onClick={performReservation} disabled={!checkCanReservate()}>
-                    Zarezerwuj
-                </button>
             </div>
         </Fragment>);
 }

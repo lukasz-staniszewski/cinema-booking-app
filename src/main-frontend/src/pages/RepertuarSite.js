@@ -37,7 +37,7 @@ const RepertuarSite = () =>{
             if (existing) {
                 existing.showtimeInfo.push({hour: hour, showtimeId: showtimeId, cinemaHallNumber: cinemaHallNumber})
             } else {
-                acc.push({movieId, name, description, length, productionYear, type, director, showtimeInfo: [{hour: hour, showtimeId: showtimeId, cinemaHallNumber: cinemaHallNumber}]})
+                acc.push({movieId, name, date, description, length, productionYear, type, director, showtimeInfo: [{hour: hour, showtimeId: showtimeId, cinemaHallNumber: cinemaHallNumber}]})
             }
             return acc
         }, []);

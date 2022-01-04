@@ -41,4 +41,13 @@
 .hours a {
     border: 2px solid #c42b2b;
     padding: 8px 12px;
+    font-size: 20px;
+}
+
+.hours a:hover{
+    color: black;
+    background-color: var(--dark-red);
+    border-color: var(--dark-red);
+    border-radius: 5px;
+    font-weight: bold;
 }
