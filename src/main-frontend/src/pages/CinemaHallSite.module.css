@@ -2,6 +2,7 @@
     padding-top: 35px;
     padding-bottom: 35px;
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     background-image: url("../img/cinema-theme.jpeg");
@@ -12,14 +13,12 @@
     min-height: 100vh;
 }
 
-.hall>div>div{
+.hall>div.centerwrapper>div{
     background-color: rgba(0,0,0,0.8);;
     border: 3px solid darkgrey;
     padding: 30px;
     border-radius: 20px;
 }
-
-
 
 .hall .reservationbtn{
     color: white;
@@ -36,7 +35,6 @@
     background-color: darkgray;
 }
 
-
 .row {
     display: flex;
     flex-direction: row;
@@ -52,8 +50,20 @@
     aspect-ratio: 1/1;
     border: none;
     border-radius: 5px;
-    z-index: 3;
+    z-index: 4;
     font-size: 24px;
+    position: relative;
+}
+
+.row button span{
+    font-size: 10px;
+    color: grey;
+    font-weight: bold;
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -90%);
 }
 
 .screen{
@@ -64,10 +74,10 @@
 
 }
 
-
 .screen div{
     height: 10px;
-    width: 100%;
+    width: 85%;
+    margin: 0 auto;
     background-color: grey;
 }
 
@@ -83,6 +93,15 @@
     color: red;
 }
 
+
+.row button span.occupied{
+    color: red;
+}
+
+.row button span.active{
+    color: black;
+}
+
 .legend{
     text-transform: uppercase;
     display: flex;
@@ -92,11 +111,13 @@
 }
 
 .underscreen{
+    border-top: 2px solid darkgrey;
+    padding-top: 30px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    margin-top: 35px;
+    margin-top: 60px;
 }
 
 .legend>div{
@@ -107,20 +128,22 @@
 .legend>div:nth-child(1)>i{
     color:darkgrey;
 }
+
 .legend>div:nth-child(2)>i{
     color: var(--dark-red);
 }
+
 .legend>div:nth-child(3)>i{
     color: lawngreen;
 }
 
-.hall>div>div.showtimeinfo{
+.hall>div.centerwrapper>div.showtimeinfo{
     color: white;
     padding: 15px 30px;
     margin-bottom: 25px;
 }
 
-.hall>div>div.showtimeinfo>div:nth-child(1){
+.hall>div.centerwrapper>div.showtimeinfo>div:nth-child(1){
     display: flex;
     font-size: 20px;
     flex-direction: row;
@@ -131,12 +154,12 @@
     text-transform: uppercase;
 }
 
-.hall>div>div.showtimeinfo>div:nth-child(1)>div{
+.hall>div.centerwrapper>div.showtimeinfo>div:nth-child(1)>div{
     display: flex;
     flex-direction: row;
 }
 
-.hall>div>div.showtimeinfo>div>div>p{
+.hall>div.centerwrapper>div.showtimeinfo>div>div>p{
     margin-left: 10px;
 }
 
@@ -154,13 +177,38 @@
 .filminfo li:not(:last-child) {
     border-right: 2px solid darkgray;
 }
-.hall>div>div.showtimeinfo>div:nth-child(2) {
-    display: flex;
+
+.hall>div.centerwrapper>div.showtimeinfo>div:nth-child(2) {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
-.hall>div>div.showtimeinfo>div:nth-child(2)>div:nth-child(1) {
-    padding: 10px 30px 10px 0;
+
+.hall>div.centerwrapper>div.showtimeinfo>div:nth-child(2)>div:nth-child(1) {
+    padding: 10px 20px 10px 0;
+}
+
+.hall>div.centerwrapper>div.showtimeinfo>div:nth-child(2)>div:nth-child(3) {
+    padding: 10px 0 10px 20px;
+}
+
+.space{
+    height: 100%;
     border-right: 2px solid darkgrey;
+}
+
+.linewrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: darkgrey;
+}
+
+.line{
+    margin: 0 5px;
+    background-color: darkgrey;
+    height: 3px;
+    width: 50px;
 }

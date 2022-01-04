@@ -1,6 +1,12 @@
 .repertuar-container{
-    background-color: black;
+    background: rgb(45,0,0);
+    background: radial-gradient(circle, rgba(45,0,0,1) 0%, rgba(82,0,0,1) 50%, rgba(134,0,0,1) 100%);
     min-height: 100vh;
+    /*z-index: 0;*/
+    position: relative;
+    left: 0;
+    right: 0;
+    padding-bottom: 30px;
 }
 
 .calendar{

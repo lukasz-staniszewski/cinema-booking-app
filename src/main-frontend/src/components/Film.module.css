@@ -1,6 +1,8 @@
+.card:not(:nth-child(1)){
+    border-top: 1px solid darkgray;
+}
 .card{
     padding:30px 0;
-    border-top: 1px solid darkgray;
     color: white;
 }
 
