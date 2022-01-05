@@ -10,14 +10,14 @@
     font-weight: bold;
     text-transform: uppercase;
 }
-@media (min-width: 760px) and (orientation: portrait) {
+@media (min-width: 760px){
     .calendar{
         padding: 15px;
         font-size: 24px;
     }
 }
 
-@media (min-width: 1000px) and (orientation: portrait) {
+@media (min-width: 1000px){
     .calendar{
         padding: 24px;
         font-size: 35px;

@@ -70,7 +70,7 @@ div.showtimeinfo {
     border-right: 2px solid darkgrey;
 }
 
-@media (min-width: 360px) and (orientation: portrait){
+@media (min-width: 360px){
     .showtimeinfo>div:nth-child(1){
         font-size: 13px;
     }
@@ -90,7 +90,7 @@ div.showtimeinfo {
     }
 }
 
-@media (min-width: 540px) and (orientation: portrait){
+@media (min-width: 540px){
     .showtimeinfo>div:nth-child(1){
         font-size: 15px;
     }
@@ -110,7 +110,7 @@ div.showtimeinfo {
     }
 }
 
-@media (min-width: 760px) and (orientation: portrait){
+@media (min-width: 760px){
     .showtimeinfo>div:nth-child(1){
         font-size: 20px;
     }
@@ -130,7 +130,7 @@ div.showtimeinfo {
     }
 }
 
-@media (min-width: 1000px) and (orientation: portrait){
+@media (min-width: 1000px){
     .showtimeinfo>div:nth-child(1){
         font-size: 31px;
     }

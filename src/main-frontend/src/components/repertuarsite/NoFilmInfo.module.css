@@ -50,7 +50,7 @@
     padding: 10px;
 }
 
-@media (min-width: 760px) and (orientation: portrait) {
+@media (min-width: 760px){
     .wrapper{
         font-size: 35px;
     }
@@ -63,7 +63,7 @@
     }
 }
 
-@media (min-width: 1000px) and (orientation: portrait) {
+@media (min-width: 1000px){
     .wrapper{
         font-size: 45px;
         padding: 30px;
@@ -80,5 +80,13 @@
     }
     .wrapper div:nth-child(2){
         padding-top: 30px;
+    }
+}
+
+@media (orientation: landscape){
+    .wrapper {
+        position: static;
+        margin-top: 10px;
+        transform: translate(0%, 0%);
     }
 }

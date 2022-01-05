@@ -32,18 +32,18 @@
     z-index: 5;
 }
 
-@media (min-width: 360px) and (orientation: portrait) {
+@media (min-width: 360px){
     .hall{
         min-height: calc(100vh - 65px);
     }
 }
 
-@media (min-width: 760px) and (orientation: portrait){
+@media (min-width: 760px){
     .hall {
         min-height: calc(100vh - 80px);
     }
 }
-@media (orientation: portrait) and (min-width: 1000px){
+@media (min-width: 1000px){
     .hall{
         min-height: calc(100vh - 100px);
     }

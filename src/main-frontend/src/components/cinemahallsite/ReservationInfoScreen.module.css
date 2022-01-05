@@ -15,14 +15,14 @@
     color: black;
 }
 
-@media (min-width: 760px) and (orientation: portrait) {
+@media (min-width: 760px){
     .wrapper{
         padding: 20px;
         font-size: 20px;
     }
 }
 
-@media (min-width: 1000px) and (orientation: portrait) {
+@media (min-width: 1000px){
     .wrapper{
         padding: 30px;
         font-size: 30px;

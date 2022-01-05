@@ -70,7 +70,7 @@
     font-weight: bold;
 }
 
-@media (min-width: 360px) and (orientation: portrait){
+@media (min-width: 360px){
     .hours a{
         font-size: 20px;
         padding:10px 12px;
@@ -78,7 +78,7 @@
 
 }
 
-@media (min-width: 768px) and (orientation: portrait){
+@media (min-width: 768px){
     .hours a{
         font-size: 25px;
         padding:12px 14px;
@@ -110,7 +110,7 @@
     }
 }
 
-@media (min-width: 1000px) and (orientation: portrait){
+@media (min-width: 1000px){
     .hours a{
         font-size: 35px;
         padding:16px 25px;

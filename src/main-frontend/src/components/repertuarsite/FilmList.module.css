@@ -7,7 +7,7 @@
     border-radius: 20px;
 }
 
-@media (min-width: 1000px) and (orientation: portrait){
+@media (min-width: 1000px){
     .offerts-list{
         padding: 25px;
     }

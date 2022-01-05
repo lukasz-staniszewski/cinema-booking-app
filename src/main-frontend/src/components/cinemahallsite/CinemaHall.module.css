@@ -81,7 +81,7 @@
 }
 
 
-@media (min-width: 360px) and (orientation: portrait){
+@media (min-width: 360px){
     .linewrapper{
         font-size: 11px;
     }
@@ -90,7 +90,7 @@
     }
 }
 
-@media (min-width: 540px) and (orientation: portrait) {
+@media (min-width: 540px){
     .linewrapper {
         font-size: 15px;
     }
@@ -108,7 +108,7 @@
         font-size: 7px;
     }
 }
-@media (min-width: 760px) and (orientation: portrait) {
+@media (min-width: 760px){
     .linewrapper {
         font-size: 17px;
     }
@@ -127,7 +127,7 @@
     }
 }
 
-@media (min-width: 1000px) and (orientation: portrait) {
+@media (min-width: 1000px){
     .linewrapper {
         font-size: 28px;
     }

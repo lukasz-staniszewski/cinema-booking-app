@@ -54,7 +54,7 @@
     color: white;
 }
 
-@media (orientation: portrait) and (min-width: 360px){
+@media (min-width: 360px){
     .navigation{
         font-size: 20px;
         height: 65px;
@@ -71,7 +71,7 @@
     }
 }
 
-@media (orientation: portrait) and (min-width: 760px){
+@media (min-width: 760px){
     .navigation{
         font-size: 30px;
         height: 80px;
@@ -88,7 +88,7 @@
     }
 }
 
-@media (orientation: portrait) and (min-width: 1000px){
+@media (min-width: 1000px){
     .navigation{
         font-size: 50px;
         height: 100px;
@@ -105,54 +105,3 @@
     }
 }
 
-
-@media (orientation: landscape) and (min-width: 500px){
-    .navigation{
-        font-size: 25px;
-        height: 70px;
-    }
-    .navigation ul li{
-        padding-inline: 18px;
-    }
-    .navigation ul button{
-        font-size: 25px;
-    }
-
-    .navigation ul button.log-reg-fs {
-        font-size: 13px;
-    }
-}
-
-@media (orientation: landscape) and (min-width: 1000px){
-    .navigation{
-        font-size: 35px;
-        height: 90px;
-    }
-    .navigation ul li{
-        padding-inline: 24px;
-    }
-    .navigation ul button{
-        font-size: 35px;
-    }
-
-    .navigation ul button.log-reg-fs {
-        font-size: 18px;
-    }
-}
-
-@media (orientation: landscape) and (min-width: 1440px){
-    .navigation{
-        font-size: 50px;
-        height: 95px;
-    }
-    .navigation ul li {
-        padding-inline: 35px;
-    }
-    .navigation ul button{
-        font-size: 50px;
-    }
-
-    .navigation ul button.log-reg-fs {
-        font-size: 25px;
-    }
-}

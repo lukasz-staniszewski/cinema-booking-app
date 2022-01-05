@@ -12,18 +12,18 @@
     margin: 0 auto;
 }
 
-@media (min-width: 360px) and (orientation: portrait){
+@media (min-width: 360px){
     .repertuar-container {
         min-height: calc(100vh - 65px);
     }
 }
 
-@media (min-width: 760px) and (orientation: portrait){
+@media (min-width: 760px){
     .repertuar-container {
         min-height: calc(100vh - 80px);
     }
 }
-@media (min-width: 1000px) and (orientation: portrait){
+@media (min-width: 1000px){
     .repertuar-container {
         min-height: calc(100vh - 100px);
     }
