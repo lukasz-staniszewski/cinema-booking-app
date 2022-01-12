@@ -29,6 +29,7 @@ const MainNavigation = () =>{
                     <li>
                         <NavLink to="/repertuar" className={(data) => (data.isActive ? styles.active: "")}> Repertuar</NavLink>
                     </li>
+                    {authCtx.isUserLogged && <li><NavLink to={"/profil"}>Profil</NavLink></li>}
                     <li>
                         <div className={styles.buttonwrapper}><button className={authCtx.isUserLogged ? '' : styles['log-reg-fs']} onClick={authCtx.isUserLogged ? authCtx.logout : showModalHandler}>
                             {
