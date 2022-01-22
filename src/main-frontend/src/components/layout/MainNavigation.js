@@ -3,8 +3,8 @@ import {Fragment, useState, useContext} from "react";
 
 import styles from "./MainNavigation.module.css"
 
-import AuthScreen from "./AuthScreen";
-import AuthContext from "../components/store/auth-context.js";
+import AuthScreen from "../../auth/AuthScreen";
+import AuthContext from "../store/auth-context.js";
 
 const MainNavigation = () =>{
     const [modalIsShown, setModalIsShown] = useState(false);
@@ -17,10 +17,6 @@ const MainNavigation = () =>{
     const hideModalHandler = ()=>{
         setModalIsShown(false);
     }
-    console.log(authCtx.token);
-    console.log(authCtx.isUserLogged);
-    const tokenData = localStorage.getItem('token');
-    console.log(tokenData);
 
     return(
         <Fragment>
@@ -33,6 +29,7 @@ const MainNavigation = () =>{
                     <li>
                         <NavLink to="/repertuar" className={(data) => (data.isActive ? styles.active: "")}> Repertuar</NavLink>
                     </li>
+                    {authCtx.isUserLogged && <li><NavLink to={"/profil"}>Profil</NavLink></li>}
                     <li>
                         <div className={styles.buttonwrapper}><button className={authCtx.isUserLogged ? '' : styles['log-reg-fs']} onClick={authCtx.isUserLogged ? authCtx.logout : showModalHandler}>
                             {

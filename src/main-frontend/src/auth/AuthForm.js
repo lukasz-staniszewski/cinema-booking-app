@@ -15,7 +15,7 @@ const AuthForm = (props) =>{
             <button className={styles.quit} onClick={props.onClose}>X</button>
             <h1>{isLogin ? "Logowanie":"Rejestracja"}</h1>
             {isLogin? <LoginForm styles={styles} onClose = {props.onClose}/> : <RegisterForm styles={styles}/>}
-            <button type="button" onClick={setIsLoginHandler}>
+            <button className={styles.redirectbtn} type="button" onClick={setIsLoginHandler}>
                 {isLogin? "Nie masz konta? Zarejestruj się!":"Masz już konto? Przejdź do logowania!"}
             </button>
         </section>

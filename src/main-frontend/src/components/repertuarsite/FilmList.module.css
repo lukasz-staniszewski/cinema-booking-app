@@ -1,0 +1,21 @@
+.offerts-list {
+    width: 85%;
+    margin: 30px auto 0;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.7);
+    border: 2px solid white;
+    border-radius: 20px;
+}
+
+@media (min-width: 1000px){
+    .offerts-list{
+        padding: 25px;
+    }
+}
+
+@media (min-width: 1280px) and (orientation: landscape){
+    .offerts-list {
+        width: 65%;
+        padding: 10px;
+    }
+}

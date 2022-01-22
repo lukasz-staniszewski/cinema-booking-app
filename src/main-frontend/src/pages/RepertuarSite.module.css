@@ -1,7 +1,38 @@
 .repertuar-container{
-    background-color: black;
+    background: rgb(45,0,0);
+    background: radial-gradient(circle, rgba(45,0,0,1) 0%, rgba(82,0,0,1) 50%, rgba(134,0,0,1) 100%);
+    min-height: calc(100vh - 40px);
+    position: relative;
+    left: 0;
+    right: 0;
+    padding-bottom: 30px;
 }
 
 .calendar{
     margin: 0 auto;
 }
+
+@media (min-width: 360px){
+    .repertuar-container {
+        min-height: calc(100vh - 45px);
+    }
+}
+
+@media (min-width: 760px){
+    .repertuar-container {
+        min-height: calc(100vh - 65px);
+    }
+}
+@media (min-width: 1000px){
+    .repertuar-container {
+        min-height: calc(100vh - 80px);
+    }
+}
+
+@media (min-width: 1280px) and (orientation: landscape){
+    .repertuar-container {
+        min-height: calc(100vh - 64px);
+    }
+
+}
+
