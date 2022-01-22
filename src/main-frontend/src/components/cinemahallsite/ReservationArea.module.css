@@ -13,3 +13,9 @@ div.reservationareawrapper{
         padding: 30px 30px 0;
     }
 }
+
+@media (min-width: 1280px) and (orientation: landscape){
+    div.reservationareawrapper{
+        padding: 20px 10px 0;
+    }
+}

@@ -114,3 +114,22 @@
         padding-bottom: 35px;
     }
 }
+
+@media (min-width: 1280px) and (orientation: landscape){
+    .reservationbtn{
+        padding: 10px 10px;
+        font-size: 20px;
+    }
+    .legend{
+        font-size: 17px;
+    }
+
+    .legend>div {
+        margin-right: 22px;
+    }
+
+    .underscreen{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}

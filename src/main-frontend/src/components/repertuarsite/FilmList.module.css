@@ -12,3 +12,10 @@
         padding: 25px;
     }
 }
+
+@media (min-width: 1280px) and (orientation: landscape){
+    .offerts-list {
+        width: 65%;
+        padding: 10px;
+    }
+}

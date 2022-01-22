@@ -158,3 +158,33 @@
     }
 }
 
+@media (min-width: 1280px) and (orientation: landscape){
+    .linewrapper {
+        font-size: 21px;
+    }
+
+    .row > button {
+        font-size: 21px;
+    }
+
+    .line {
+        margin: 0 10px;
+        width: 30px;
+    }
+
+    .row > button > span {
+        font-size: 9px;
+    }
+
+    .screen{
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+    .screen div{
+        height: 5px;
+        width: 85%;
+        margin: 0 auto;
+        background-color: grey;
+    }
+}

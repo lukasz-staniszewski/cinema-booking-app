@@ -28,3 +28,10 @@
         font-size: 30px;
     }
 }
+
+@media (min-width: 1280px) and (orientation: landscape){
+    .wrapper{
+        padding: 20px;
+        font-size: 22px;
+    }
+}

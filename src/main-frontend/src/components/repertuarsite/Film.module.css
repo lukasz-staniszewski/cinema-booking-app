@@ -146,3 +146,40 @@
         margin-top: 20px;
     }
 }
+
+@media (min-width: 1280px) and (orientation: landscape){
+    .hours a{
+        font-size: 18px;
+        padding:7px 12px;
+    }
+
+    .card{
+        padding:20px 15px;
+    }
+
+
+    .card h2{
+        font-size: 25px;
+    }
+
+    .card h3{
+        font-size: 20px;
+    }
+
+    .card p{
+        font-size: 15px;
+    }
+
+    .info{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .info li{
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+    .hours{
+        margin-top: 10px;
+    }
+}
