@@ -1,6 +1,7 @@
 package com.thaichicken.cinemabooking.controller;
 
 import com.thaichicken.cinemabooking.dto.ClientDTO;
+import com.thaichicken.cinemabooking.dto.ClientProfileDataDTO;
 import com.thaichicken.cinemabooking.model.ClientEntity;
 import com.thaichicken.cinemabooking.service.DefaultClientService;
 import org.modelmapper.ModelMapper;
@@ -39,6 +40,12 @@ public class ClientController {
         return convertToDto(clientService.getClientById(id));
     }
 
+    @GetMapping("/client/email")
+    @ResponseBody
+    public ClientProfileDataDTO getClientByEmail(@RequestBody ClientProfileDataDTO clientDTO) {
+        return convertToProfileDataDto(clientService.getClientByEmail(clientDTO.getEmail()));
+    }
+
     @PostMapping("/client")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
@@ -63,6 +70,10 @@ public class ClientController {
     private ClientDTO convertToDto(ClientEntity client) {
         return modelMapper.map(client, ClientDTO.class);
 
+    }
+
+    private ClientProfileDataDTO convertToProfileDataDto(ClientEntity client) {
+        return modelMapper.map(client, ClientProfileDataDTO.class);
     }
 
     private ClientEntity convertToEntity(ClientDTO clientDTO) {
