@@ -7,6 +7,7 @@ import classes from "./Reservations.module.css"
 const Reservations = (props) =>{
     const authCtx = useContext(AuthContext);
     const [userReservations, setUserReservations] = useState([]);
+    const [isShowingPrevious, setIsShowPrevious] = useState(false);
 
     const mailFromJWT = () =>{
         if (authCtx.isUserLogged) {
@@ -17,6 +18,18 @@ const Reservations = (props) =>{
             console.log("User is not logged to get mail from token!");
         }
     }
+
+    const toPreviousHandler = () =>{
+        if(!isShowingPrevious){
+            setIsShowPrevious(true);
+        }
+    };
+
+    const toCurrentHandler = () =>{
+      if(isShowingPrevious){
+          setIsShowPrevious(false);
+      }
+    };
 
     const fetchUserReservations = async () =>{
         try{
@@ -50,9 +63,24 @@ const Reservations = (props) =>{
         // eslint-disable-next-line
     },[authCtx.isUserLogged]);
 
+    const filteredReservaions = userReservations.filter(item =>
+        item.isToCancel===isShowingPrevious
+    );
+
     return (<div>
         <h2 className={classes.h2}>Twoje rezerwacje</h2>
-        {userReservations.map((item, index) => {return <ReservationItem key={index} details={item}/>})}
+        <div className={classes.card}>
+            <div className={classes.filters}>
+                <button onClick={toPreviousHandler} className={isShowingPrevious && classes.isActive}>Stare rezerwacje</button>
+                <button onClick={toCurrentHandler} className={!isShowingPrevious && classes.isActive}>Aktualne rezerwacje</button>
+            </div>
+            <div className={classes["reservation-list"]}>
+            {filteredReservaions && filteredReservaions.map((el, index)=>{
+                {return <ReservationItem key={index} details={el}/>}
+            })}
+                {filteredReservaions.length===0 && <p className={classes.noresinfo}>Brak rezerwacji</p>}
+            </div>
+        </div>
     </div>)
 };
 export default Reservations;

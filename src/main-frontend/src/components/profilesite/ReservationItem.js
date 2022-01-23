@@ -1,7 +1,8 @@
 import styles from "./ReservationItem.module.css";
+import CancelButton from "./CancelButton";
 
 const ReservationItem = (props) => {
-    const {date, hallNumber, hour, movieName, seats, timestamp} = props.details;
+    const {date, hallNumber, hour, isToCancel, movieName, reservationId, seats, timestamp} = props.details;
 
     const convertTimeStamp = (date) => {
         let newDate = new Date(date);
@@ -28,7 +29,10 @@ const ReservationItem = (props) => {
             </div>
                 <p>R.{seat.rowNumber}</p></div>)}
         </div>
-        <p>Data złożenia rezerwacji: {convertTimeStamp(timestamp)}</p>
+        <div className={styles["reservation"]}>
+            <p>Data złożenia rezerwacji: {convertTimeStamp(timestamp)}</p>
+            <CancelButton isToCancel={isToCancel} reservationId={reservationId}/>
+        </div>
     </div>
 }
 
