@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class HallSeatDTO {
-    private int rowNumber;
-    private int seatInRowNumber;
-    private int cinemaHallNumber;
+    private Integer rowNumber;
+    private Integer seatInRowNumber;
+    private Integer cinemaHallNumber;
 }

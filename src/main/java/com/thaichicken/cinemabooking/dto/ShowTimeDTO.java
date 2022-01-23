@@ -7,10 +7,10 @@ import java.sql.Time;
 
 @Data
 public class ShowTimeDTO {
-    private int showtimeId; //Integer
+    private Integer showtimeId; //Integer
     private Date date;
     private Time hour;
-    private int movieId;
+    private Integer movieId;
     private String name;
     private String description;
     private Integer length;

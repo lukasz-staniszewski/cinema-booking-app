@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class ShowTimeSeatDTO {
-    private int showtimeId;
-    private int rowNumber;
-    private int seatInRowNumber;
-    private int cinemaHallNumber;
-    private int reservationId;
+    private Integer showtimeId;
+    private Integer rowNumber;
+    private Integer seatInRowNumber;
+    private Integer cinemaHallNumber;
+    private Integer reservationId;
 }

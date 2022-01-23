@@ -7,9 +7,9 @@ import java.util.List;
 
 @Data
 public class ReservationCreationDTO {
-    private int reservationId;
+    private Integer reservationId;
     private Timestamp timestamp;
     private String clientEmail;
-    private int showTimeId;
+    private Integer showTimeId;
     private List<HallSeatDTO> reservationSeats;
 }

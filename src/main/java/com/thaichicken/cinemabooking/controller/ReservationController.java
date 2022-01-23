@@ -85,10 +85,10 @@ public class ReservationController {
             reservationProfileDataDTO.setHallNumber(showTimeSeatEntities.get(0).getCinemaHallNumber());
             reservationProfileDataDTO.setMovieName(showTimeService.getShowTimeById(showTimeSeatEntities.get(0).getShowtimeId()).getMovieByMovieId().getName());
             reservationProfileDataDTO.setIsToCancel(reservationProfileDataDTO.getDate().toLocalDate().isBefore(LocalDate.now()));
-            reservationProfileDataDTOS.sort((Comparator.comparing(ReservationProfileDataDTO::getDate)));
             reservationProfileDataDTO.setSeats(hallSeatDTOS);
             reservationProfileDataDTOS.add(reservationProfileDataDTO);
         }
+        reservationProfileDataDTOS.sort((Comparator.comparing(ReservationProfileDataDTO::getDate)));
         return reservationProfileDataDTOS;
     }
 
