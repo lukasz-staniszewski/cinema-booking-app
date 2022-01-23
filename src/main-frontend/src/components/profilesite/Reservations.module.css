@@ -1,0 +1,13 @@
+.h2 {
+    color: white;
+    text-align: center;
+    line-height: 4;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@media (min-width: 1280px) and (orientation: landscape) {
+    h2{
+        font-size: 30px;
+    }
+}

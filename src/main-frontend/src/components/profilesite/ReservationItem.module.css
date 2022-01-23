@@ -1,0 +1,120 @@
+.reservation-item {
+    width: 90vw;
+    max-width: 450px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+}
+
+.reservation-item:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.reservation-item > p:last-child{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-transform: uppercase;
+    align-items: center;
+    padding: 10px 4px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.hall {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
+.movie {
+    font-size: 22px;
+    text-align: center;
+    margin-top: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.seats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    column-gap: 10px;
+    margin: 26px 0px;
+}
+
+.seat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.seat i {
+    font-size: 20px;
+}
+
+.seat span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -75%);
+    color: black;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .date {
+        display: flex;
+        flex-direction: row;
+        column-gap: 14px;
+    }
+    .details {
+        padding: 20px 10px;
+    }
+}
+
+@media (min-width: 1280px) and (orientation: landscape){
+    .reservation-item {
+        padding: 0;
+    }
+    .reservation-item:not(:last-child) {
+        margin-bottom: 10px;
+    }
+    .details {
+        padding: 6px 15px;
+        align-items: center;
+    }
+    .hall {
+        column-gap: 8px;
+    }
+    .movie {
+        margin: 0;
+        border-bottom: 1px solid lightgrey;
+        padding: 8px;
+    }
+    .seats {
+        margin: 0;
+        padding: 10px 0;
+        border-bottom: 1px solid lightgrey;
+    }
+
+    .seats p{
+        font-size: 12px;
+    }
+
+    .reservation-item > p:last-child{
+        font-size: 13px;
+        padding: 4px 0;
+    }
+}
