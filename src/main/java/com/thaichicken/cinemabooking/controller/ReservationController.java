@@ -1,10 +1,7 @@
 package com.thaichicken.cinemabooking.controller;
 
 
-import com.thaichicken.cinemabooking.dto.HallSeatDTO;
-import com.thaichicken.cinemabooking.dto.ReservationCreationDTO;
-import com.thaichicken.cinemabooking.dto.ReservationDTO;
-import com.thaichicken.cinemabooking.dto.ReservationProfileDataDTO;
+import com.thaichicken.cinemabooking.dto.*;
 import com.thaichicken.cinemabooking.model.ClientEntity;
 import com.thaichicken.cinemabooking.model.HallSeatEntityPK;
 import com.thaichicken.cinemabooking.model.ReservationEntity;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -88,7 +84,7 @@ public class ReservationController {
             reservationProfileDataDTO.setSeats(hallSeatDTOS);
             reservationProfileDataDTOS.add(reservationProfileDataDTO);
         }
-        reservationProfileDataDTOS.sort((Comparator.comparing(ReservationProfileDataDTO::getDate)));
+        reservationProfileDataDTOS.sort(new ReservationComparator());
         return reservationProfileDataDTOS;
     }
 

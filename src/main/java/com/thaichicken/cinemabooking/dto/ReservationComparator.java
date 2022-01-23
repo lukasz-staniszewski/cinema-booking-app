@@ -1,5 +1,6 @@
 package com.thaichicken.cinemabooking.dto;
 
+import java.sql.Timestamp;
 import java.util.Comparator;
 
 public class ReservationComparator implements Comparator<ReservationProfileDataDTO> {
@@ -46,6 +47,8 @@ public class ReservationComparator implements Comparator<ReservationProfileDataD
      */
     @Override
     public int compare(ReservationProfileDataDTO o1, ReservationProfileDataDTO o2) {
-        return o1.getDate().compareTo(o2.getDate());
+        Timestamp timestamp1 = Timestamp.valueOf(o1.getDate().toString() + " " + o1.getHour().toString());
+        Timestamp timestamp2 = Timestamp.valueOf(o2.getDate().toString() + " " + o2.getHour().toString());
+        return timestamp1.compareTo(timestamp2);
     }
 }
