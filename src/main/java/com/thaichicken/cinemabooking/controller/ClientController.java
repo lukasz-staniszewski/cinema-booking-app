@@ -42,8 +42,8 @@ public class ClientController {
 
     @GetMapping("/client/email")
     @ResponseBody
-    public ClientProfileDataDTO getClientByEmail(@RequestBody ClientProfileDataDTO clientDTO) {
-        return convertToProfileDataDto(clientService.getClientByEmail(clientDTO.getEmail()));
+    public ClientProfileDataDTO getClientByEmail(@RequestParam(value = "email") String email) {
+        return convertToProfileDataDto(clientService.getClientByEmail(email));
     }
 
     @PostMapping("/client")

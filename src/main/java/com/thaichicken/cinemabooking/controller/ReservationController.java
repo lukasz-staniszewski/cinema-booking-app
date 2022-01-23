@@ -4,6 +4,7 @@ package com.thaichicken.cinemabooking.controller;
 import com.thaichicken.cinemabooking.dto.HallSeatDTO;
 import com.thaichicken.cinemabooking.dto.ReservationCreationDTO;
 import com.thaichicken.cinemabooking.dto.ReservationDTO;
+import com.thaichicken.cinemabooking.dto.ReservationProfileDataDTO;
 import com.thaichicken.cinemabooking.model.ClientEntity;
 import com.thaichicken.cinemabooking.model.HallSeatEntityPK;
 import com.thaichicken.cinemabooking.model.ReservationEntity;
@@ -14,6 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,6 +60,38 @@ public class ReservationController {
     public ReservationDTO getReservation(@PathVariable(value = "id") Integer id) {
         return convertToDto(reservationService.getReservationById(id));
     }
+
+    @GetMapping("/email")
+    @ResponseBody
+    public List<ReservationProfileDataDTO> getAllReservationsByClientEmail(@RequestParam(value = "email") String email) {
+        ClientEntity client = clientService.getClientByEmail(email);
+        List<ReservationEntity> allClientReservations = reservationService.getAllReservationsByClient(client);
+        List<ReservationProfileDataDTO> reservationProfileDataDTOS = new ArrayList<>();
+        for (ReservationEntity reservation : allClientReservations) {
+            ReservationProfileDataDTO reservationProfileDataDTO = new ReservationProfileDataDTO();
+            reservationProfileDataDTO.setReservationId(reservation.getReservationId());
+            reservationProfileDataDTO.setTimestamp(reservation.getTimestamp());
+            List<ShowTimeSeatEntity> showTimeSeatEntities = showTimeSeatService.getAllShowTimeSeatsByReservation(reservation);
+            List<HallSeatDTO> hallSeatDTOS = new ArrayList<>();
+            for (ShowTimeSeatEntity showTimeSeat : showTimeSeatEntities) {
+                HallSeatDTO hallSeatDTO = new HallSeatDTO();
+                hallSeatDTO.setSeatInRowNumber(showTimeSeat.getSeatInRowNumber());
+                hallSeatDTO.setRowNumber(showTimeSeat.getRowNumber());
+                hallSeatDTO.setCinemaHallNumber(showTimeSeat.getCinemaHallNumber());
+                hallSeatDTOS.add(hallSeatDTO);
+            }
+            reservationProfileDataDTO.setDate(showTimeService.getShowTimeById(showTimeSeatEntities.get(0).getShowtimeId()).getDate());
+            reservationProfileDataDTO.setHour(showTimeService.getShowTimeById(showTimeSeatEntities.get(0).getShowtimeId()).getHour());
+            reservationProfileDataDTO.setHallNumber(showTimeSeatEntities.get(0).getCinemaHallNumber());
+            reservationProfileDataDTO.setMovieName(showTimeService.getShowTimeById(showTimeSeatEntities.get(0).getShowtimeId()).getMovieByMovieId().getName());
+            reservationProfileDataDTO.setIsToCancel(reservationProfileDataDTO.getDate().toLocalDate().isBefore(LocalDate.now()));
+            reservationProfileDataDTOS.sort((Comparator.comparing(ReservationProfileDataDTO::getDate)));
+            reservationProfileDataDTO.setSeats(hallSeatDTOS);
+            reservationProfileDataDTOS.add(reservationProfileDataDTO);
+        }
+        return reservationProfileDataDTOS;
+    }
+
 
     @PostMapping("/reservation")
     @ResponseStatus(HttpStatus.CREATED)
