@@ -7,6 +7,7 @@ import Loader from "react-loader-spinner"
 const StartingSite = React.lazy(()=>import("./pages/StartingSite"))
 const RepertuarSite = React.lazy(()=>import("./pages/RepertuarSite"))
 const CinemaHallSite = React.lazy(()=>import("./pages/CinemaHallSite"));
+const ProfileSite = React.lazy(()=>import("./pages/ProfileSite"));
 
 const App = () =>{
     const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
@@ -20,6 +21,7 @@ const App = () =>{
                         <Route path="/" element={<StartingSite/>}/>
                         <Route path="/repertuar" element={<RepertuarSite/>}/>
                         <Route path="/rezerwacja" element={<CinemaHallSite/>}/>
+                        <Route path="/profil" element={<ProfileSite/>}/>
                         <Route path="*" element={<Navigate to="/"/>}/>
                     </Routes>
                 </Suspense>
