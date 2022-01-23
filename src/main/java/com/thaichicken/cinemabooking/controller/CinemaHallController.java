@@ -4,6 +4,7 @@ import com.thaichicken.cinemabooking.dto.CinemaHallDTO;
 import com.thaichicken.cinemabooking.model.CinemaHallEntity;
 import com.thaichicken.cinemabooking.service.DefaultCinemaHallService;
 import org.modelmapper.ModelMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequestMapping("cinema_halls")
 public class CinemaHallController {
@@ -37,6 +39,7 @@ public class CinemaHallController {
     @GetMapping("/cinema_hall/{id}")
     @ResponseBody
     public CinemaHallDTO getCinemaHall(@PathVariable(value = "id") Integer id) {
+        log.info("Cinema with id: " + id + "want to be get");
         return convertToDto(cinemaHallService.getCinemaHallById(id));
     }
 
@@ -44,8 +47,10 @@ public class CinemaHallController {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public CinemaHallDTO createCinemaHall(@RequestBody CinemaHallDTO cinemaHallDto) {
+
         CinemaHallEntity cinemaHall = convertToEntity(cinemaHallDto);
         CinemaHallEntity cinemaHallCreated = cinemaHallService.createCinemaHall(cinemaHall);
+        log.info("Cinema with cinema hall number: " + cinemaHallDto.getCinemaHallNumber() + " has been created");
         return convertToDto(cinemaHallCreated);
     }
 
@@ -57,14 +62,17 @@ public class CinemaHallController {
         if (!Objects.equals(id, cinemaHallDto.getCinemaHallNumber())) {
             throw new IllegalArgumentException("IDs don't match");
         }
+
         CinemaHallEntity cinemaHall = convertToEntity(cinemaHallDto);
         CinemaHallEntity cinemaHallUpdated = cinemaHallService.updateCinemaHall(id, cinemaHall);
+        log.info("Cinema with id: " + id + "gets update");
         return convertToDto(cinemaHallUpdated);
     }
 
     @DeleteMapping("/cinema_hall/{id}")
     public ResponseEntity<HttpStatus> deleteCinemaHall(@PathVariable(value = "id") Integer id) {
         cinemaHallService.deleteCinemaHall(id);
+        log.info("Cinema with id: " + id + " has been deleted");
         return ResponseEntity.ok().build();
     }
 

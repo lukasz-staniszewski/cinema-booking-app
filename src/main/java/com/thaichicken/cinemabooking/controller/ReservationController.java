@@ -7,6 +7,7 @@ import com.thaichicken.cinemabooking.model.HallSeatEntityPK;
 import com.thaichicken.cinemabooking.model.ReservationEntity;
 import com.thaichicken.cinemabooking.model.ShowTimeSeatEntity;
 import com.thaichicken.cinemabooking.service.*;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequestMapping("reservations")
 public class ReservationController {
@@ -46,6 +48,7 @@ public class ReservationController {
     @ResponseBody
     public List<ReservationDTO> getAllReservations() {
         List<ReservationEntity> reservationEntities = reservationService.getAllReservations();
+        log.info("All reservation has been get");
         return reservationEntities.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
@@ -54,6 +57,7 @@ public class ReservationController {
     @GetMapping("/reservation/{id}")
     @ResponseBody
     public ReservationDTO getReservation(@PathVariable(value = "id") Integer id) {
+        log.info("Reservation with id: " + id + " has been get");
         return convertToDto(reservationService.getReservationById(id));
     }
 
@@ -84,6 +88,7 @@ public class ReservationController {
             reservationProfileDataDTO.setSeats(hallSeatDTOS);
             reservationProfileDataDTOS.add(reservationProfileDataDTO);
         }
+        log.info("All reservations for client with email: " + email + " has been get");
         reservationProfileDataDTOS.sort(new ReservationComparator());
         return reservationProfileDataDTOS;
     }
@@ -107,6 +112,7 @@ public class ReservationController {
             showTimeSeat.setReservationByReservationId(reservationService.getReservationById(reservationCreated.getReservationId()));
             showTimeSeatService.createShowTimeSeat(showTimeSeat);
         }
+        log.info("Reservation for movie: " + showTimeService.getShowTimeById(reservationDto.getShowTimeId()) + " by client with email:" + reservationDto.getClientEmail() + " has been created");
         return convertToDto(reservationCreated);
     }
 
@@ -139,6 +145,7 @@ public class ReservationController {
     @DeleteMapping("/reservation/{id}")
     public ResponseEntity<HttpStatus> deleteReservation(@PathVariable(value = "id") Integer id) {
         reservationService.deleteReservation(id);
+        log.info("Reservation with id: " + id + " has been deleted");
         return ResponseEntity.ok().build();
     }
 

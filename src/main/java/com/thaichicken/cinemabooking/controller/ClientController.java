@@ -4,6 +4,7 @@ import com.thaichicken.cinemabooking.dto.ClientDTO;
 import com.thaichicken.cinemabooking.dto.ClientProfileDataDTO;
 import com.thaichicken.cinemabooking.model.ClientEntity;
 import com.thaichicken.cinemabooking.service.DefaultClientService;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequestMapping("clients")
 public class ClientController {
@@ -29,6 +31,8 @@ public class ClientController {
     @ResponseBody
     public List<ClientDTO> getAllClients() {
         List<ClientEntity> clientEntities = clientService.getAllClients();
+
+        log.info("All clients has been get");
         return clientEntities.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
@@ -37,12 +41,14 @@ public class ClientController {
     @GetMapping("/client/{id}")
     @ResponseBody
     public ClientDTO getClient(@PathVariable(value = "id") Integer id) {
+        log.info("Client with id: " + id + " has been get");
         return convertToDto(clientService.getClientById(id));
     }
 
     @GetMapping("/client/email")
     @ResponseBody
     public ClientProfileDataDTO getClientByEmail(@RequestParam(value = "email") String email) {
+        log.info("Client with email: " + email + " has been get");
         return convertToProfileDataDto(clientService.getClientByEmail(email));
     }
 
@@ -50,6 +56,7 @@ public class ClientController {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public ClientDTO createClient(@RequestBody ClientEntity client) {
+        log.info("Client with email: " + client.getEmail() + " has been created");
         return convertToDto(clientService.createClient(client));
     }
 
@@ -58,12 +65,14 @@ public class ClientController {
     @ResponseBody
     public ClientDTO updateClient(@PathVariable(value = "id") Integer id,
                                   @RequestBody ClientEntity client) {
+        log.info("Client with email: " + client.getEmail() + " has been updated");
         return convertToDto(clientService.updateClient(id, client));
     }
 
     @DeleteMapping("/client/{id}")
     public ResponseEntity<HttpStatus> deleteClient(@PathVariable(value = "id") Integer id) {
         clientService.deleteClient(id);
+        log.info("Client with id: " + id + " has been deleted");
         return ResponseEntity.ok().build();
     }
 
