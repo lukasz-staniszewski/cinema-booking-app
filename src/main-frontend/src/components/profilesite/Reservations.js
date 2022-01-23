@@ -76,6 +76,7 @@ const Reservations = (props) =>{
             </div>
             <div className={classes["reservation-list"]}>
             {filteredReservaions && filteredReservaions.map((el, index)=>{
+                // eslint-disable-next-line
                 {return <ReservationItem key={index} details={el}/>}
             })}
                 {filteredReservaions.length===0 && <p className={classes.noresinfo}>Brak rezerwacji</p>}

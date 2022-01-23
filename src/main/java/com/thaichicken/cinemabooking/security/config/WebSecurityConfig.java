@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/movies").hasAuthority("ADMIN");
         http.authorizeRequests().antMatchers("/cinema_halls").hasAuthority("USER");
 
-        http.authorizeRequests().antMatchers("/clients/client/**").hasAuthority("USER");
+        http.authorizeRequests().antMatchers("/clients/client/email**").hasAuthority("USER");
         http.authorizeRequests().antMatchers("/reservations/**").hasAuthority("USER");
 
 
