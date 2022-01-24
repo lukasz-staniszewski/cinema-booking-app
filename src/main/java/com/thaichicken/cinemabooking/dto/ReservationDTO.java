@@ -6,9 +6,9 @@ import java.sql.Timestamp;
 
 @Data
 public class ReservationDTO {
-    private int reservationId;
+    private Integer reservationId;
     private Timestamp timestamp;
-    private int clientId;
+    private Integer clientId;
     private String clientName;
     private String clientSurname;
     private String clientEmail;

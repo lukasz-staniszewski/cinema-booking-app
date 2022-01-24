@@ -2,6 +2,7 @@ package com.thaichicken.cinemabooking.service;
 
 import com.thaichicken.cinemabooking.exception.ResourceAlreadyExistsException;
 import com.thaichicken.cinemabooking.exception.ResourceNotFoundException;
+import com.thaichicken.cinemabooking.model.ReservationEntity;
 import com.thaichicken.cinemabooking.model.ShowTimeSeatEntity;
 import com.thaichicken.cinemabooking.model.ShowTimeSeatEntityPK;
 import com.thaichicken.cinemabooking.repository.ShowTimeSeatRepository;
@@ -58,5 +59,9 @@ public class DefaultShowTimeSeatService implements ShowTimeSeatService {
 
     public List<ShowTimeSeatEntity> getAllShowTimeSeatsByShowtimeId(Integer showtimeId) {
         return showTimeSeatRepository.findAllByShowtimeId(showtimeId);
+    }
+
+    public List<ShowTimeSeatEntity> getAllShowTimeSeatsByReservation(ReservationEntity reservation) {
+        return showTimeSeatRepository.findAllByReservationByReservationId(reservation);
     }
 }

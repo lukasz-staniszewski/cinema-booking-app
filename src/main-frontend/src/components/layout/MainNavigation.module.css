@@ -1,9 +1,9 @@
 .navigation {
     background-color: black;
-    padding: 20px;
-    height: 59px;
+    padding: 12px;
+    height: 40px;
     border-bottom: 2px solid darkgray;
-    font-size: 15px;
+    font-size: 10px;
 }
 
 .navigation ul {
@@ -20,12 +20,12 @@
     text-transform: uppercase;
     background: none;
     transition: 0.4s;
-    font-size: 15px;
+    font-size: 10px;
     font-family: 'Roboto', sans-serif;
 }
 
 .navigation ul button.log-reg-fs {
-    font-size: 8px;
+    font-size: 5px;
 }
 
 .navigation ul button:hover{
@@ -54,27 +54,27 @@
     color: white;
 }
 
-@media (orientation: portrait) and (min-width: 360px){
+@media (min-width: 360px){
     .navigation{
-        font-size: 20px;
-        height: 65px;
+        font-size: 15px;
+        height: 45px;
     }
     .navigation ul li{
         padding-inline: 10px;
     }
     .navigation ul button{
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .navigation ul button.log-reg-fs {
-        font-size: 10px;
+        font-size: 7px;
     }
 }
 
-@media (orientation: portrait) and (min-width: 760px){
+@media (min-width: 760px){
     .navigation{
         font-size: 30px;
-        height: 80px;
+        height: 65px;
     }
     .navigation ul li{
         padding-inline: 20px;
@@ -88,71 +88,36 @@
     }
 }
 
-@media (orientation: portrait) and (min-width: 1000px){
+@media (min-width: 1000px){
     .navigation{
-        font-size: 50px;
-        height: 100px;
+        font-size: 40px;
+        height: 80px;
     }
     .navigation ul li{
         padding-inline: 35px;
     }
     .navigation ul button{
-        font-size: 50px;
+        font-size: 40px;
     }
 
     .navigation ul button.log-reg-fs {
-        font-size: 25px;
+        font-size: 20px;
     }
 }
 
-
-@media (orientation: landscape) and (min-width: 500px){
+@media (min-width: 1280px) and (orientation: landscape){
     .navigation{
-        font-size: 25px;
-        height: 70px;
+        font-size: 30px;
+        height: 64px;
     }
     .navigation ul li{
-        padding-inline: 18px;
-    }
-    .navigation ul button{
-        font-size: 25px;
-    }
-
-    .navigation ul button.log-reg-fs {
-        font-size: 13px;
-    }
-}
-
-@media (orientation: landscape) and (min-width: 1000px){
-    .navigation{
-        font-size: 35px;
-        height: 90px;
-    }
-    .navigation ul li{
-        padding-inline: 24px;
-    }
-    .navigation ul button{
-        font-size: 35px;
-    }
-
-    .navigation ul button.log-reg-fs {
-        font-size: 18px;
-    }
-}
-
-@media (orientation: landscape) and (min-width: 1440px){
-    .navigation{
-        font-size: 50px;
-        height: 95px;
-    }
-    .navigation ul li {
         padding-inline: 35px;
     }
     .navigation ul button{
-        font-size: 50px;
+        font-size: 30px;
     }
 
     .navigation ul button.log-reg-fs {
-        font-size: 25px;
+        font-size: 15px;
     }
 }

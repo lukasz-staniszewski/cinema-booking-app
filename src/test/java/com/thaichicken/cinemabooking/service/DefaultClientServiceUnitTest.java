@@ -22,7 +22,7 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class DefaultClientServiceIntegrationTest {
+public class DefaultClientServiceUnitTest {
     @Autowired
     private DefaultClientService clientService;
 

@@ -1,5 +1,5 @@
-import Modal from "./Modal";
-import AuthForm from "../auth/AuthForm";
+import Modal from "../components/layout/Modal";
+import AuthForm from "./AuthForm";
 
 const AuthScreen = (props) =>{
 

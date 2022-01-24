@@ -1,6 +1,7 @@
 package com.thaichicken.cinemabooking.service;
 
 import com.thaichicken.cinemabooking.exception.ResourceNotFoundException;
+import com.thaichicken.cinemabooking.model.ClientEntity;
 import com.thaichicken.cinemabooking.model.ReservationEntity;
 import com.thaichicken.cinemabooking.repository.ReservationRepository;
 import org.springframework.stereotype.Service;
@@ -45,5 +46,9 @@ public class DefaultReservationService implements ReservationService {
     @Override
     public ReservationEntity getReservationById(Integer id) {
         return reservationRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Reservation not found with id " + id));
+    }
+
+    public List<ReservationEntity> getAllReservationsByClient(ClientEntity client) {
+        return reservationRepository.findAllByClientByClientId(client);
     }
 }

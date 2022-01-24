@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class MovieDTO {
-    private int movieId;
+    private Integer movieId;
     private String name;
     private String description;
     private Integer length;

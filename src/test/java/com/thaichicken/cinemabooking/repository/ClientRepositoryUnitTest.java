@@ -11,15 +11,12 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
 import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class ClientRepositoryIntegrationTest {
+public class ClientRepositoryUnitTest {
     @Autowired
     private TestEntityManager entityManager;
 
@@ -32,8 +29,7 @@ public class ClientRepositoryIntegrationTest {
         entityManager.persistAndFlush(CLIENT_1);
 
         Optional<ClientEntity> found = clientRepository.findById(CLIENT_1.getClientId());
-        found.ifPresent(clientEntity -> Assertions.assertEquals(clientEntity.getName(), CLIENT_1.getName()));
-
+        Assertions.assertEquals(Optional.of(CLIENT_1), found);
     }
 
     @Test
@@ -42,7 +38,7 @@ public class ClientRepositoryIntegrationTest {
         entityManager.persistAndFlush(CLIENT_1);
 
         Optional<ClientEntity> found = clientRepository.findByEmail(CLIENT_1.getEmail());
-        found.ifPresent(clientEntity -> Assertions.assertEquals(clientEntity.getName(), CLIENT_1.getName()));
+        Assertions.assertEquals(Optional.of(CLIENT_1), found);
     }
 
     @Test
@@ -57,6 +53,6 @@ public class ClientRepositoryIntegrationTest {
     @Test
     public void whenInvalidId_thenReturnNull() {
         Optional<ClientEntity> found = clientRepository.findById(-2);
-        found.ifPresent(Assertions::assertNull);
+        Assertions.assertEquals(Optional.empty(), found);
     }
 }

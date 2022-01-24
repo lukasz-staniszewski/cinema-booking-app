@@ -1,0 +1,190 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 3px;
+    margin: 4px;
+}
+
+.row>button {
+    background-color: transparent;
+    color: grey;
+    text-align: center;
+    aspect-ratio: 1/1;
+    border: none;
+    border-radius: 5px;
+    z-index: 4;
+    font-size: 8px;
+    position: relative;
+}
+
+.row>button>span{
+    font-size: 5px;
+    color: grey;
+    font-weight: bold;
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -90%);
+}
+
+.screen{
+    margin-top: 20px;
+    color: gray;
+    text-align: center;
+    text-transform: uppercase;
+
+}
+
+.screen div{
+    height: 6px;
+    width: 85%;
+    margin: 0 auto;
+    background-color: grey;
+}
+
+.row button i {
+    z-index: 2;
+}
+
+.row button.active {
+    color: lawngreen;
+}
+
+.row button.occupied {
+    color: red;
+}
+
+
+.row button span.occupied{
+    color: red;
+}
+
+.row button span.active{
+    color: black;
+}
+
+.linewrapper{
+    font-size: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: darkgrey;
+}
+
+.line{
+    margin: 0 2px;
+    background-color: darkgrey;
+    height: 3px;
+    width: 8px;
+}
+
+
+@media (min-width: 360px){
+    .linewrapper{
+        font-size: 11px;
+    }
+    .row>button {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 540px){
+    .linewrapper {
+        font-size: 15px;
+    }
+
+    .row > button {
+        font-size: 15px;
+    }
+
+    .line {
+        margin: 0 4px;
+        width: 14px;
+    }
+
+    .row > button > span {
+        font-size: 7px;
+    }
+}
+@media (min-width: 760px){
+    .linewrapper {
+        font-size: 17px;
+    }
+
+    .row > button {
+        font-size: 23px;
+    }
+
+    .line {
+        margin: 0 6px;
+        width: 32px;
+    }
+
+    .row > button > span {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1000px){
+    .linewrapper {
+        font-size: 28px;
+    }
+
+    .row > button {
+        font-size: 34px;
+    }
+
+    .line {
+        margin: 0 10px;
+        width: 45px;
+    }
+
+    .row > button > span {
+        font-size: 15px;
+    }
+
+    .screen{
+        margin-top: 55px;
+        font-size: 30px;
+    }
+
+    .screen div{
+        height: 9px;
+        width: 85%;
+        margin: 0 auto;
+        background-color: grey;
+    }
+}
+
+@media (min-width: 1280px) and (orientation: landscape){
+    .linewrapper {
+        font-size: 21px;
+    }
+
+    .row > button {
+        font-size: 21px;
+    }
+
+    .line {
+        margin: 0 10px;
+        width: 30px;
+    }
+
+    .row > button > span {
+        font-size: 9px;
+    }
+
+    .screen{
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+    .screen div{
+        height: 5px;
+        width: 85%;
+        margin: 0 auto;
+        background-color: grey;
+    }
+}

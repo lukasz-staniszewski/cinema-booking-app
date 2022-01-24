@@ -1,0 +1,18 @@
+.cancelbutton{
+    padding: 4px 6px;
+    text-transform: uppercase;
+    font-size: 13px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(139,0,0,0.6);
+    border: 1px solid lightgrey;
+}
+
+.cancelbutton:hover{
+    background-color: rgba(139,0,0,1.0);
+}
+
+.cancelbutton.ispast {
+    background-color: rgba(169,169,169,0.6);
+    cursor: default;
+}

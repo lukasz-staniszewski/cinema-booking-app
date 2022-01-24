@@ -5,6 +5,7 @@ import com.thaichicken.cinemabooking.model.ShowTimeEntity;
 import com.thaichicken.cinemabooking.service.DefaultCinemaHallService;
 import com.thaichicken.cinemabooking.service.DefaultMovieService;
 import com.thaichicken.cinemabooking.service.DefaultShowTimeService;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequestMapping("show_times")
 public class ShowTimeController {
@@ -39,6 +41,7 @@ public class ShowTimeController {
     @ResponseBody
     public List<ShowTimeDTO> getAllShowTimes() {
         List<ShowTimeEntity> showTimeEntities = showTimeService.getAllShowTimes();
+        log.info("Get all Show times");
         return showTimeEntities.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
@@ -48,6 +51,7 @@ public class ShowTimeController {
     @ResponseBody
     public List<ShowTimeDTO> getShowTimesByDate(@RequestParam(value = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date) {
         List<ShowTimeEntity> showTimeEntities = showTimeService.getShowTimesByDate(date);
+        log.info("Show time with date: " + date + " has been get");
         return showTimeEntities.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
@@ -56,6 +60,7 @@ public class ShowTimeController {
     @GetMapping("/show_time/{id}")
     @ResponseBody
     public ShowTimeDTO getShowTime(@PathVariable(value = "id") Integer id) {
+        log.info("Show time with id: " + id + " has been get");
         return convertToDto(showTimeService.getShowTimeById(id));
     }
 
@@ -65,6 +70,7 @@ public class ShowTimeController {
     public ShowTimeDTO createShowTime(@RequestBody ShowTimeDTO showTimeDto) {
         ShowTimeEntity showTime = convertToEntity(showTimeDto);
         ShowTimeEntity showTimeCreated = showTimeService.createShowTime(showTime);
+        log.info("Show time with name: " + showTimeDto.getName() + " has been created");
         return convertToDto(showTimeCreated);
     }
 
@@ -78,12 +84,14 @@ public class ShowTimeController {
         }
         ShowTimeEntity showTime = convertToEntity(showTimeDto);
         ShowTimeEntity showTimeUpdated = showTimeService.updateShowTime(id, showTime);
+        log.info("Show time with id: " + id + " has been updated");
         return convertToDto(showTimeUpdated);
     }
 
     @DeleteMapping("/show_time/{id}")
     public ResponseEntity<HttpStatus> deleteShowTime(@PathVariable(value = "id") Integer id) {
         showTimeService.deleteShowTime(id);
+        log.info("Show time with id: " + id + " has been deleted");
         return ResponseEntity.ok().build();
     }
 

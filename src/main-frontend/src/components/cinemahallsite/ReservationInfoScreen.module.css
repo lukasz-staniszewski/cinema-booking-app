@@ -1,0 +1,37 @@
+.wrapper{
+    padding: 10px;
+    text-align: center;
+    max-width: 60vw;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+.wrapper h2{
+    text-transform: uppercase;
+}
+
+.wrapper p{
+    margin-top: 15px;
+    color: black;
+}
+
+@media (min-width: 760px){
+    .wrapper{
+        padding: 20px;
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1000px){
+    .wrapper{
+        padding: 30px;
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 1280px) and (orientation: landscape){
+    .wrapper{
+        padding: 20px;
+        font-size: 22px;
+    }
+}
