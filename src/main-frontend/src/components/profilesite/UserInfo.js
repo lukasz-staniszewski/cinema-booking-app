@@ -42,7 +42,7 @@ const UserInfo = () =>{
     useEffect( () =>{
         fetchUserDetails();
         // eslint-disable-next-line
-    },[]);
+    },[authCtx.isUserLogged]);
 
     return (
         <div className={`${classes2.rounded} ${classes.wrapper}`}>

@@ -1,0 +1,50 @@
+.h2 {
+    color: white;
+    text-align: center;
+    line-height: 2.5;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.filters button {
+    padding: 10px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.7);
+    /*border: 1px solid lightgrey;*/
+    /*border-bottom-width: 0px;*/
+    border-radius: 20px 20px 0 0;
+}
+
+button.isActive {
+    transition: 0.01s;
+    color: black;
+    font-weight: bold;
+    background-color: rgba(255,255,255, 0.7);
+}
+
+.reservation-list {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.7);
+}
+.noresinfo {
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+}
+
+@media (min-width: 1280px) and (orientation: landscape) {
+    h2{
+        font-size: 30px;
+    }
+}
